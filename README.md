@@ -1,25 +1,25 @@
-# RC4 文本文件加密工具
+# RC4 Text File Encryption Tool
 
-一个基于 Qt/C++ 的简单文本文件加密解密工具,使用 RC4 算法。
+A simple Qt/C++ based text file encryption and decryption tool using the RC4 algorithm.
 
-## 功能特性
+## Features
 
-- 使用 RC4 算法加密/解密文本文件
-- 时间戳作为加密密钥,无需额外输入
-- 输出格式: `时间戳@加密字符串`
-- 可配置的超时验证
-- In-place 模式(直接覆盖原文件)
-- 图形界面操作
+- Encrypt/decrypt text files using RC4 algorithm
+- Timestamp as encryption key, no additional input required
+- Output format: `timestamp@encrypted_string`
+- Configurable timeout verification
+- In-place mode (directly overwrite original file)
+- Graphical user interface
 
-## 构建
+## Building
 
-### 依赖
+### Dependencies
 
-- Qt 5.15+ 或 Qt 6.x
+- Qt 5.15+ or Qt 6.x
 - CMake 3.16+
-- C++17 编译器
+- C++17 compiler
 
-### 编译步骤
+### Build Steps
 
 ```bash
 mkdir build
@@ -28,27 +28,27 @@ cmake ..
 make
 ```
 
-## 使用
+## Usage
 
-1. 选择输入文件
-2. 选择输出文件(或勾选 In-place 覆盖原文件)
-3. 设置 Timeout 值(0 或负值表示不检查)
-4. 点击"加密"或"解密"按钮
+1. Select input file
+2. Select output file (or check In-place to overwrite original file)
+3. Set Timeout value (0 or negative means no timeout check)
+4. Click "Encrypt" or "Decrypt" button
 
-## 加密格式
+## Encryption Format
 
-加密后的文件内容格式为:
+The encrypted file content format is:
 
 ```
-时间戳@Base64编码的密文
+timestamp@Base64-encoded-ciphertext
 ```
 
-例如:
+For example:
 ```
 1712345678@SGVsbG8gV29ybGQ=
 ```
 
-解密时,程序会自动提取时间戳作为密钥,并验证是否超时。
+During decryption, the program automatically extracts the timestamp as the key and verifies if it has timed out.
 
 ## License
 
