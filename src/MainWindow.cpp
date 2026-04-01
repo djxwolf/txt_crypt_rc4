@@ -212,7 +212,7 @@ void MainWindow::onEncrypt()
 {
     QString userPath = m_inputFileEdit->text();
     if (userPath.isEmpty()) {
-        QMessageBox::warning(this, "错误", "请选择输入文件");
+        setWindowTitle("RC4 文本文件加密工具 - 请选择输入文件");
         return;
     }
 
@@ -225,7 +225,7 @@ void MainWindow::onEncrypt()
     } else {
         QString userOutputPath = m_outputFileEdit->text();
         if (userOutputPath.isEmpty()) {
-            QMessageBox::warning(this, "错误", "请指定输出文件");
+            setWindowTitle("RC4 文本文件加密工具 - 请指定输出文件");
             return;
         }
         // 解析输出路径（支持相对于输入文件的路径）
@@ -247,12 +247,12 @@ void MainWindow::onEncrypt()
             QTextStream out(&outputFile);
             out << result.outputData;
             outputFile.close();
-            QMessageBox::information(this, "成功", "加密完成！");
+            setWindowTitle("RC4 文本文件加密工具 - 加密完成");
         } else {
-            QMessageBox::warning(this, "错误", "无法写入输出文件");
+            setWindowTitle("RC4 文本文件加密工具 - 错误：无法写入输出文件");
         }
     } else {
-        QMessageBox::critical(this, "错误", result.errorMessage);
+        setWindowTitle("RC4 文本文件加密工具 - 错误：" + result.errorMessage);
     }
 
     m_progressBar->setValue(0);
@@ -262,7 +262,7 @@ void MainWindow::onDecrypt()
 {
     QString userPath = m_inputFileEdit->text();
     if (userPath.isEmpty()) {
-        QMessageBox::warning(this, "错误", "请选择输入文件");
+        setWindowTitle("RC4 文本文件加密工具 - 请选择输入文件");
         return;
     }
 
@@ -275,7 +275,7 @@ void MainWindow::onDecrypt()
     } else {
         QString userOutputPath = m_outputFileEdit->text();
         if (userOutputPath.isEmpty()) {
-            QMessageBox::warning(this, "错误", "请指定输出文件");
+            setWindowTitle("RC4 文本文件加密工具 - 请指定输出文件");
             return;
         }
         // 解析输出路径（支持相对于输入文件的路径）
@@ -297,12 +297,12 @@ void MainWindow::onDecrypt()
             QTextStream out(&outputFile);
             out << result.outputData;
             outputFile.close();
-            QMessageBox::information(this, "成功", "解密完成！");
+            setWindowTitle("RC4 文本文件加密工具 - 解密完成");
         } else {
-            QMessageBox::warning(this, "错误", "无法写入输出文件");
+            setWindowTitle("RC4 文本文件加密工具 - 错误：无法写入输出文件");
         }
     } else {
-        QMessageBox::critical(this, "错误", result.errorMessage);
+        setWindowTitle("RC4 文本文件加密工具 - 错误：" + result.errorMessage);
     }
 
     m_progressBar->setValue(0);
