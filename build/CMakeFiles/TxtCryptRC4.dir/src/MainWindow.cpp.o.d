@@ -1090,4 +1090,5 @@ CMakeFiles/TxtCryptRC4.dir/src/MainWindow.cpp.o: \
   /opt/homebrew/opt/qt@6/lib/QtWidgets.framework/Headers/qmessagebox.h \
   /opt/homebrew/opt/qt@6/lib/QtWidgets.framework/Headers/qdialogbuttonbox.h \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/QFile \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/QTextStream
+  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/QTextStream \
+  /opt/homebrew/opt/qt@6/lib/QtGui.framework/Headers/QFontMetrics

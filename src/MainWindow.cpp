@@ -11,6 +11,7 @@
 #include <QMessageBox>
 #include <QFile>
 #include <QTextStream>
+#include <QFontMetrics>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -102,13 +103,28 @@ void MainWindow::setupUI()
     setStatusBar(m_statusBar);
     m_statusBar->showMessage("就绪");
 
-    // 进度条放在状态栏右侧
+    // 进度条放在状态栏右侧，块状样式
     m_progressBar = new QProgressBar;
     m_progressBar->setRange(0, 100);
     m_progressBar->setValue(0);
-    m_progressBar->setMaximumWidth(150);
     m_progressBar->setTextVisible(true);
     m_progressBar->setFormat("%p%");
+    // 设置块状进度条样式
+    m_progressBar->setStyleSheet(
+        "QProgressBar {"
+        "    border: 1px solid #ccc;"
+        "    border-radius: 3px;"
+        "    text-align: center;"
+        "    background-color: #f0f0f0;"
+        "}"
+        "QProgressBar::chunk {"
+        "    background-color: #4CAF50;"
+        "    width: 10px;"
+        "    margin: 1px;"
+        "}"
+    );
+    // 添加 stretch 让进度条尽可能占满空间
+    m_statusBar->addPermanentWidget(new QWidget, 1);
     m_statusBar->addPermanentWidget(m_progressBar);
 }
 
@@ -122,6 +138,7 @@ void MainWindow::connectSignals()
     connect(m_decryptBtn, &QPushButton::clicked, this, &MainWindow::onDecrypt);
     connect(m_processor, &FileProcessor::progressChanged, this, &MainWindow::onProgressChanged);
     connect(m_processor, &FileProcessor::statusChanged, this, &MainWindow::onStatusChanged);
+    connect(m_statusBar, &QStatusBar::messageChanged, this, &MainWindow::onStatusBarMessageChanged);
 }
 
 void MainWindow::onBrowseInput()
@@ -414,4 +431,21 @@ void MainWindow::showStatus(const QString &message)
 void MainWindow::clearStatus()
 {
     m_statusBar->clearMessage();
+}
+
+void MainWindow::onStatusBarMessageChanged(const QString &message)
+{
+    // 根据消息长度动态调整进度条宽度
+    if (message.isEmpty()) {
+        // 消息为空时，进度条尽量占满
+        m_progressBar->setMinimumWidth(200);
+    } else {
+        // 计算消息文本的近似宽度
+        QFontMetrics fm(m_statusBar->font());
+        int messageWidth = fm.horizontalAdvance(message) + 50; // 加一些边距
+
+        // 进度条最小宽度为 100，最大为状态栏宽度减去消息宽度
+        int minWidth = qMax(100, m_statusBar->width() - messageWidth - 20);
+        m_progressBar->setMinimumWidth(minWidth);
+    }
 }
