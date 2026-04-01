@@ -19,3 +19,16 @@ target_link_libraries(txt_crypt_rc4_tests
 
 # Add tests to CTest
 add_test(NAME RC4CipherTest COMMAND txt_crypt_rc4_tests)
+
+# Validator tests
+add_executable(validator_tests
+    test_validator.cpp
+    ../src/Validator.cpp
+)
+
+target_link_libraries(validator_tests
+    Qt6::Test
+    Qt6::Core
+)
+
+add_test(NAME ValidatorTest COMMAND validator_tests)
