@@ -9,6 +9,7 @@
 #include <QProgressBar>
 #include <QTextEdit>
 #include <QLabel>
+#include <QStatusBar>
 #include "FileProcessor.h"
 
 class MainWindow : public QMainWindow
@@ -34,6 +35,8 @@ private:
     bool isEncryptedFile(const QString &content);
     QString resolveOutputPath(const QString &inputPath, const QString &outputPath);
     QString resolveInputPath(const QString &userPath);
+    void showStatus(const QString &message);
+    void clearStatus();
 
     // UI 组件
     QLineEdit *m_inputFileEdit;
@@ -47,6 +50,7 @@ private:
     QProgressBar *m_progressBar;
     QTextEdit *m_originalContentEdit;
     QTextEdit *m_resultContentEdit;
+    QStatusBar *m_statusBar;
 
     FileProcessor *m_processor;
 };

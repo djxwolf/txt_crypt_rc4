@@ -102,6 +102,11 @@ void MainWindow::setupUI()
     contentLayout->addWidget(resultGroup);
 
     mainLayout->addLayout(contentLayout);
+
+    // ===== 状态栏 =====
+    m_statusBar = new QStatusBar(this);
+    setStatusBar(m_statusBar);
+    m_statusBar->showMessage("就绪");
 }
 
 void MainWindow::connectSignals()
@@ -150,6 +155,9 @@ void MainWindow::onBrowseInput()
 
 void MainWindow::onInputFileChanged(const QString &text)
 {
+    // 清除状态栏信息
+    clearStatus();
+
     // 如果输入为空，清空预览并禁用按钮
     if (text.isEmpty()) {
         m_originalContentEdit->clear();
@@ -212,7 +220,7 @@ void MainWindow::onEncrypt()
 {
     QString userPath = m_inputFileEdit->text();
     if (userPath.isEmpty()) {
-        setWindowTitle("RC4 文本文件加密工具 - 请选择输入文件");
+        showStatus("请选择输入文件");
         return;
     }
 
@@ -225,7 +233,7 @@ void MainWindow::onEncrypt()
     } else {
         QString userOutputPath = m_outputFileEdit->text();
         if (userOutputPath.isEmpty()) {
-            setWindowTitle("RC4 文本文件加密工具 - 请指定输出文件");
+            showStatus("请指定输出文件");
             return;
         }
         // 解析输出路径（支持相对于输入文件的路径）
@@ -247,12 +255,12 @@ void MainWindow::onEncrypt()
             QTextStream out(&outputFile);
             out << result.outputData;
             outputFile.close();
-            setWindowTitle("RC4 文本文件加密工具 - 加密完成");
+            showStatus("加密完成");
         } else {
-            setWindowTitle("RC4 文本文件加密工具 - 错误：无法写入输出文件");
+            showStatus("错误：无法写入输出文件");
         }
     } else {
-        setWindowTitle("RC4 文本文件加密工具 - 错误：" + result.errorMessage);
+        showStatus("错误：" + result.errorMessage);
     }
 
     m_progressBar->setValue(0);
@@ -262,7 +270,7 @@ void MainWindow::onDecrypt()
 {
     QString userPath = m_inputFileEdit->text();
     if (userPath.isEmpty()) {
-        setWindowTitle("RC4 文本文件加密工具 - 请选择输入文件");
+        showStatus("请选择输入文件");
         return;
     }
 
@@ -275,7 +283,7 @@ void MainWindow::onDecrypt()
     } else {
         QString userOutputPath = m_outputFileEdit->text();
         if (userOutputPath.isEmpty()) {
-            setWindowTitle("RC4 文本文件加密工具 - 请指定输出文件");
+            showStatus("请指定输出文件");
             return;
         }
         // 解析输出路径（支持相对于输入文件的路径）
@@ -297,12 +305,12 @@ void MainWindow::onDecrypt()
             QTextStream out(&outputFile);
             out << result.outputData;
             outputFile.close();
-            setWindowTitle("RC4 文本文件加密工具 - 解密完成");
+            showStatus("解密完成");
         } else {
-            setWindowTitle("RC4 文本文件加密工具 - 错误：无法写入输出文件");
+            showStatus("错误：无法写入输出文件");
         }
     } else {
-        setWindowTitle("RC4 文本文件加密工具 - 错误：" + result.errorMessage);
+        showStatus("错误：" + result.errorMessage);
     }
 
     m_progressBar->setValue(0);
@@ -315,7 +323,7 @@ void MainWindow::onProgressChanged(int percent)
 
 void MainWindow::onStatusChanged(const QString &status)
 {
-    setWindowTitle("RC4 文本文件加密工具 - " + status);
+    m_statusBar->showMessage(status);
 }
 
 bool MainWindow::isEncryptedFile(const QString &content)
@@ -384,4 +392,14 @@ QString MainWindow::resolveInputPath(const QString &userPath)
 
     // 返回规范化的绝对路径
     return QDir::cleanPath(resolvedPath);
+}
+
+void MainWindow::showStatus(const QString &message)
+{
+    m_statusBar->showMessage(message);
+}
+
+void MainWindow::clearStatus()
+{
+    m_statusBar->clearMessage();
 }
