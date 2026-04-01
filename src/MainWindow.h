@@ -22,6 +22,7 @@ private slots:
     void onBrowseInput();
     void onBrowseOutput();
     void onInPlaceToggled(bool checked);
+    void onInputFileChanged(const QString &text);
     void onEncrypt();
     void onDecrypt();
     void onProgressChanged(int percent);

@@ -2,6 +2,7 @@
 #include "Validator.h"
 #include <QDir>
 #include <QFileInfo>
+#include <QSignalBlocker>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGridLayout>
@@ -108,6 +109,7 @@ void MainWindow::connectSignals()
     connect(m_browseInputBtn, &QPushButton::clicked, this, &MainWindow::onBrowseInput);
     connect(m_browseOutputBtn, &QPushButton::clicked, this, &MainWindow::onBrowseOutput);
     connect(m_inPlaceCheckBox, &QCheckBox::toggled, this, &MainWindow::onInPlaceToggled);
+    connect(m_inputFileEdit, &QLineEdit::textChanged, this, &MainWindow::onInputFileChanged);
     connect(m_encryptBtn, &QPushButton::clicked, this, &MainWindow::onEncrypt);
     connect(m_decryptBtn, &QPushButton::clicked, this, &MainWindow::onDecrypt);
     connect(m_processor, &FileProcessor::progressChanged, this, &MainWindow::onProgressChanged);
@@ -118,6 +120,8 @@ void MainWindow::onBrowseInput()
 {
     QString fileName = QFileDialog::getOpenFileName(this, "选择输入文件", "", "文本文件 (*.txt);;所有文件 (*)");
     if (!fileName.isEmpty()) {
+        // 阻止信号发射，避免重复处理
+        QSignalBlocker blocker(m_inputFileEdit);
         m_inputFileEdit->setText(fileName);
 
         // 清除之前的结果
@@ -141,6 +145,48 @@ void MainWindow::onBrowseInput()
                 m_decryptBtn->setEnabled(false);
             }
         }
+    }
+}
+
+void MainWindow::onInputFileChanged(const QString &text)
+{
+    // 如果输入为空，清空预览并禁用按钮
+    if (text.isEmpty()) {
+        m_originalContentEdit->clear();
+        m_resultContentEdit->clear();
+        m_encryptBtn->setEnabled(false);
+        m_decryptBtn->setEnabled(false);
+        return;
+    }
+
+    // 解析输入文件路径（支持相对于 home 目录的路径）
+    QString inputPath = resolveInputPath(text);
+
+    // 清除之前的结果
+    m_resultContentEdit->clear();
+
+    // 读取并显示原始内容
+    QFile file(inputPath);
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QTextStream in(&file);
+        QString content = in.readAll();
+        m_originalContentEdit->setText(content);
+        file.close();
+
+        // 根据文件内容判断是否为加密文件
+        bool isEncrypted = isEncryptedFile(content);
+        if (isEncrypted) {
+            m_encryptBtn->setEnabled(false);
+            m_decryptBtn->setEnabled(true);
+        } else {
+            m_encryptBtn->setEnabled(true);
+            m_decryptBtn->setEnabled(false);
+        }
+    } else {
+        // 文件无法读取，清空预览并禁用按钮
+        m_originalContentEdit->clear();
+        m_encryptBtn->setEnabled(false);
+        m_decryptBtn->setEnabled(false);
     }
 }
 
