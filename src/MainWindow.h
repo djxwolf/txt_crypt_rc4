@@ -30,6 +30,7 @@ private slots:
 private:
     void setupUI();
     void connectSignals();
+    bool isEncryptedFile(const QString &content);
 
     // UI 组件
     QLineEdit *m_inputFileEdit;

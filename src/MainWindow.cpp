@@ -1,4 +1,5 @@
 #include "MainWindow.h"
+#include "Validator.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGridLayout>
@@ -124,8 +125,19 @@ void MainWindow::onBrowseInput()
         QFile file(fileName);
         if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
             QTextStream in(&file);
-            m_originalContentEdit->setText(in.readAll());
+            QString content = in.readAll();
+            m_originalContentEdit->setText(content);
             file.close();
+
+            // 根据文件内容判断是否为加密文件
+            bool isEncrypted = isEncryptedFile(content);
+            if (isEncrypted) {
+                m_encryptBtn->setEnabled(false);
+                m_decryptBtn->setEnabled(true);
+            } else {
+                m_encryptBtn->setEnabled(true);
+                m_decryptBtn->setEnabled(false);
+            }
         }
     }
 }
@@ -236,4 +248,35 @@ void MainWindow::onProgressChanged(int percent)
 void MainWindow::onStatusChanged(const QString &status)
 {
     setWindowTitle("RC4 文本文件加密工具 - " + status);
+}
+
+bool MainWindow::isEncryptedFile(const QString &content)
+{
+    // 检查内容是否符合加密格式: "timestamp@encryptedData"
+    QString trimmed = content.trimmed();
+
+    // 基本格式检查：必须包含 @ 符号
+    if (!trimmed.contains('@')) {
+        return false;
+    }
+
+    // 使用 Validator 的解析方法来验证格式
+    QString timestamp, encryptedData;
+    if (!Validator::parseEncryptedFormat(trimmed, timestamp, encryptedData)) {
+        return false;
+    }
+
+    // 进一步验证：时间戳应该是数字
+    bool ok;
+    timestamp.toLongLong(&ok);
+    if (!ok) {
+        return false;
+    }
+
+    // 加密数据不应该是空
+    if (encryptedData.isEmpty()) {
+        return false;
+    }
+
+    return true;
 }
