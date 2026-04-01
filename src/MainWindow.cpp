@@ -76,12 +76,6 @@ void MainWindow::setupUI()
     btnLayout->addStretch();
     mainLayout->addLayout(btnLayout);
 
-    // 进度条
-    m_progressBar = new QProgressBar;
-    m_progressBar->setRange(0, 100);
-    m_progressBar->setValue(0);
-    mainLayout->addWidget(m_progressBar);
-
     // ===== 下方内容区 =====
     QHBoxLayout *contentLayout = new QHBoxLayout;
 
@@ -107,6 +101,15 @@ void MainWindow::setupUI()
     m_statusBar = new QStatusBar(this);
     setStatusBar(m_statusBar);
     m_statusBar->showMessage("就绪");
+
+    // 进度条放在状态栏右侧
+    m_progressBar = new QProgressBar;
+    m_progressBar->setRange(0, 100);
+    m_progressBar->setValue(0);
+    m_progressBar->setMaximumWidth(150);
+    m_progressBar->setTextVisible(true);
+    m_progressBar->setFormat("%p%");
+    m_statusBar->addPermanentWidget(m_progressBar);
 }
 
 void MainWindow::connectSignals()
@@ -127,6 +130,9 @@ void MainWindow::onBrowseInput()
     if (!fileName.isEmpty()) {
         // 清除状态栏消息
         clearStatus();
+
+        // 复位进度条
+        m_progressBar->setValue(0);
 
         // 阻止信号发射，避免重复处理
         QSignalBlocker blocker(m_inputFileEdit);
@@ -160,6 +166,9 @@ void MainWindow::onInputFileChanged(const QString &text)
 {
     // 清除状态栏信息
     clearStatus();
+
+    // 复位进度条
+    m_progressBar->setValue(0);
 
     // 如果输入为空，清空预览并禁用按钮
     if (text.isEmpty()) {
@@ -243,7 +252,6 @@ void MainWindow::onEncrypt()
         outputPath = resolveOutputPath(inputPath, userOutputPath);
     }
 
-    m_progressBar->setValue(0);
     m_resultContentEdit->clear();
 
     int timeout = m_timeoutSpinBox->value();
@@ -266,7 +274,8 @@ void MainWindow::onEncrypt()
         showStatus("错误：" + result.errorMessage);
     }
 
-    m_progressBar->setValue(0);
+    // 进度条保持100%
+    m_progressBar->setValue(100);
 }
 
 void MainWindow::onDecrypt()
@@ -293,7 +302,6 @@ void MainWindow::onDecrypt()
         outputPath = resolveOutputPath(inputPath, userOutputPath);
     }
 
-    m_progressBar->setValue(0);
     m_resultContentEdit->clear();
 
     int timeout = m_timeoutSpinBox->value();
@@ -316,7 +324,8 @@ void MainWindow::onDecrypt()
         showStatus("错误：" + result.errorMessage);
     }
 
-    m_progressBar->setValue(0);
+    // 进度条保持100%
+    m_progressBar->setValue(100);
 }
 
 void MainWindow::onProgressChanged(int percent)

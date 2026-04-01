@@ -47,10 +47,10 @@ private:
     QSpinBox *m_timeoutSpinBox;
     QPushButton *m_encryptBtn;
     QPushButton *m_decryptBtn;
-    QProgressBar *m_progressBar;
     QTextEdit *m_originalContentEdit;
     QTextEdit *m_resultContentEdit;
     QStatusBar *m_statusBar;
+    QProgressBar *m_progressBar;
 
     FileProcessor *m_processor;
 };
