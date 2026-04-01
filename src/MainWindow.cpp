@@ -1,5 +1,7 @@
 #include "MainWindow.h"
 #include "Validator.h"
+#include <QDir>
+#include <QFileInfo>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGridLayout>
@@ -168,10 +170,17 @@ void MainWindow::onEncrypt()
         return;
     }
 
-    QString outputPath = m_inPlaceCheckBox->isChecked() ? inputPath : m_outputFileEdit->text();
-    if (outputPath.isEmpty()) {
-        QMessageBox::warning(this, "错误", "请指定输出文件");
-        return;
+    QString outputPath;
+    if (m_inPlaceCheckBox->isChecked()) {
+        outputPath = inputPath;
+    } else {
+        QString userOutputPath = m_outputFileEdit->text();
+        if (userOutputPath.isEmpty()) {
+            QMessageBox::warning(this, "错误", "请指定输出文件");
+            return;
+        }
+        // 解析输出路径（支持相对于输入文件的路径）
+        outputPath = resolveOutputPath(inputPath, userOutputPath);
     }
 
     m_progressBar->setValue(0);
@@ -208,10 +217,17 @@ void MainWindow::onDecrypt()
         return;
     }
 
-    QString outputPath = m_inPlaceCheckBox->isChecked() ? inputPath : m_outputFileEdit->text();
-    if (outputPath.isEmpty()) {
-        QMessageBox::warning(this, "错误", "请指定输出文件");
-        return;
+    QString outputPath;
+    if (m_inPlaceCheckBox->isChecked()) {
+        outputPath = inputPath;
+    } else {
+        QString userOutputPath = m_outputFileEdit->text();
+        if (userOutputPath.isEmpty()) {
+            QMessageBox::warning(this, "错误", "请指定输出文件");
+            return;
+        }
+        // 解析输出路径（支持相对于输入文件的路径）
+        outputPath = resolveOutputPath(inputPath, userOutputPath);
     }
 
     m_progressBar->setValue(0);
@@ -279,4 +295,24 @@ bool MainWindow::isEncryptedFile(const QString &content)
     }
 
     return true;
+}
+
+QString MainWindow::resolveOutputPath(const QString &inputPath, const QString &outputPath)
+{
+    QFileInfo outputFileInfo(outputPath);
+
+    // 如果输出路径是绝对路径，直接使用
+    if (outputFileInfo.isAbsolute()) {
+        return outputPath;
+    }
+
+    // 输出路径是相对路径，基于输入文件的目录解析
+    QFileInfo inputFileInfo(inputPath);
+    QString inputDir = inputFileInfo.absolutePath();
+
+    // 组合输入文件目录和输出相对路径
+    QString resolvedPath = QDir(inputDir).filePath(outputPath);
+
+    // 返回规范化的绝对路径
+    return QDir::cleanPath(resolvedPath);
 }

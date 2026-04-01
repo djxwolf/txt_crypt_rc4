@@ -31,6 +31,7 @@ private:
     void setupUI();
     void connectSignals();
     bool isEncryptedFile(const QString &content);
+    QString resolveOutputPath(const QString &inputPath, const QString &outputPath);
 
     // UI 组件
     QLineEdit *m_inputFileEdit;
