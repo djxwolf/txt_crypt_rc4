@@ -117,6 +117,9 @@ void MainWindow::onBrowseInput()
     if (!fileName.isEmpty()) {
         m_inputFileEdit->setText(fileName);
 
+        // 清除之前的结果
+        m_resultContentEdit->clear();
+
         // 读取并显示原始内容
         QFile file(fileName);
         if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
