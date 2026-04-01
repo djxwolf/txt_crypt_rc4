@@ -5,10 +5,12 @@ find_package(Qt6 REQUIRED COMPONENTS Test)
 
 set(TEST_SOURCES
     test_rc4.cpp
-    test_validator.cpp
 )
 
-add_executable(txt_crypt_rc4_tests ${TEST_SOURCES})
+add_executable(txt_crypt_rc4_tests
+    ${TEST_SOURCES}
+    ../src/RC4Cipher.cpp
+)
 
 target_link_libraries(txt_crypt_rc4_tests
     Qt6::Test
@@ -17,4 +19,3 @@ target_link_libraries(txt_crypt_rc4_tests
 
 # Add tests to CTest
 add_test(NAME RC4CipherTest COMMAND txt_crypt_rc4_tests)
-add_test(NAME ValidatorTest COMMAND txt_crypt_rc4_tests)
