@@ -164,11 +164,14 @@ void MainWindow::onInPlaceToggled(bool checked)
 
 void MainWindow::onEncrypt()
 {
-    QString inputPath = m_inputFileEdit->text();
-    if (inputPath.isEmpty()) {
+    QString userPath = m_inputFileEdit->text();
+    if (userPath.isEmpty()) {
         QMessageBox::warning(this, "错误", "请选择输入文件");
         return;
     }
+
+    // 解析输入文件路径（支持相对于 home 目录的路径）
+    QString inputPath = resolveInputPath(userPath);
 
     QString outputPath;
     if (m_inPlaceCheckBox->isChecked()) {
@@ -211,11 +214,14 @@ void MainWindow::onEncrypt()
 
 void MainWindow::onDecrypt()
 {
-    QString inputPath = m_inputFileEdit->text();
-    if (inputPath.isEmpty()) {
+    QString userPath = m_inputFileEdit->text();
+    if (userPath.isEmpty()) {
         QMessageBox::warning(this, "错误", "请选择输入文件");
         return;
     }
+
+    // 解析输入文件路径（支持相对于 home 目录的路径）
+    QString inputPath = resolveInputPath(userPath);
 
     QString outputPath;
     if (m_inPlaceCheckBox->isChecked()) {
@@ -312,6 +318,23 @@ QString MainWindow::resolveOutputPath(const QString &inputPath, const QString &o
 
     // 组合输入文件目录和输出相对路径
     QString resolvedPath = QDir(inputDir).filePath(outputPath);
+
+    // 返回规范化的绝对路径
+    return QDir::cleanPath(resolvedPath);
+}
+
+QString MainWindow::resolveInputPath(const QString &userPath)
+{
+    QFileInfo fileInfo(userPath);
+
+    // 如果已经是绝对路径，直接返回
+    if (fileInfo.isAbsolute()) {
+        return userPath;
+    }
+
+    // 相对路径：相对于用户的 home 目录
+    QString homePath = QDir::homePath();
+    QString resolvedPath = QDir(homePath).filePath(userPath);
 
     // 返回规范化的绝对路径
     return QDir::cleanPath(resolvedPath);
