@@ -3658,6 +3658,7 @@ CMakeFiles/TxtCryptRC4.dir/src/MainWindow.cpp.o: /Users/wenjian/work/txt_crypt_r
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qversiontagging.h \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qxptype_traits.h \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qyieldcpu.h \
+  /opt/homebrew/opt/qt@6/lib/QtGui.framework/Headers/QFontMetrics \
   /opt/homebrew/opt/qt@6/lib/QtGui.framework/Headers/qaction.h \
   /opt/homebrew/opt/qt@6/lib/QtGui.framework/Headers/qbitmap.h \
   /opt/homebrew/opt/qt@6/lib/QtGui.framework/Headers/qbrush.h \
@@ -8909,6 +8910,8 @@ TxtCryptRC4_autogen/UVLADIE3JM/moc_MainWindow.cpp:
 /opt/homebrew/opt/qt@6/lib/cmake/Qt6Gui/Qt6QJp2PluginTargets-release.cmake:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_final.h:
+
+/opt/homebrew/opt/qt@6/lib/QtGui.framework/Headers/QFontMetrics:
 
 /opt/homebrew/opt/qt@6/lib/cmake/Qt6Gui/Qt6QJp2PluginAdditionalTargetInfo.cmake:
 

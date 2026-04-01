@@ -12,6 +12,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QFontMetrics>
+#include <QSizePolicy>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -101,7 +102,6 @@ void MainWindow::setupUI()
     // ===== 状态栏 =====
     m_statusBar = new QStatusBar(this);
     setStatusBar(m_statusBar);
-    m_statusBar->showMessage("就绪");
 
     // 进度条放在状态栏右侧，块状样式
     m_progressBar = new QProgressBar;
@@ -109,6 +109,8 @@ void MainWindow::setupUI()
     m_progressBar->setValue(0);
     m_progressBar->setTextVisible(true);
     m_progressBar->setFormat("%p%");
+    // 设置进度条尽可能扩展
+    m_progressBar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     // 设置块状进度条样式
     m_progressBar->setStyleSheet(
         "QProgressBar {"
@@ -123,9 +125,11 @@ void MainWindow::setupUI()
         "    margin: 1px;"
         "}"
     );
-    // 添加 stretch 让进度条尽可能占满空间
-    m_statusBar->addPermanentWidget(new QWidget, 1);
-    m_statusBar->addPermanentWidget(m_progressBar);
+    // 将进度条添加为永久部件，放在右侧
+    m_statusBar->addPermanentWidget(m_progressBar, 1);
+
+    // 初始消息
+    m_statusBar->showMessage("就绪");
 }
 
 void MainWindow::connectSignals()
@@ -435,17 +439,26 @@ void MainWindow::clearStatus()
 
 void MainWindow::onStatusBarMessageChanged(const QString &message)
 {
-    // 根据消息长度动态调整进度条宽度
-    if (message.isEmpty()) {
-        // 消息为空时，进度条尽量占满
-        m_progressBar->setMinimumWidth(200);
-    } else {
-        // 计算消息文本的近似宽度
-        QFontMetrics fm(m_statusBar->font());
-        int messageWidth = fm.horizontalAdvance(message) + 50; // 加一些边距
+    // 计算消息文本所需宽度
+    QFontMetrics fm(m_statusBar->font());
 
-        // 进度条最小宽度为 100，最大为状态栏宽度减去消息宽度
-        int minWidth = qMax(100, m_statusBar->width() - messageWidth - 20);
-        m_progressBar->setMinimumWidth(minWidth);
+    if (message.isEmpty()) {
+        // 消息为空时，进度条占满整个状态栏
+        m_progressBar->setMinimumWidth(0);
+        m_progressBar->setMaximumWidth(16777215); // QWIDGETSIZE_MAX
+    } else {
+        // 消息不为空时，计算消息宽度并设置进度条占用剩余空间
+        int messageWidth = fm.horizontalAdvance(message) + 30; // 加一些边距
+        int totalWidth = m_statusBar->width();
+
+        if (totalWidth > messageWidth) {
+            int availableWidth = totalWidth - messageWidth;
+            m_progressBar->setMinimumWidth(availableWidth);
+            m_progressBar->setMaximumWidth(availableWidth);
+        } else {
+            // 状态栏太窄，至少给进度条100px
+            m_progressBar->setMinimumWidth(100);
+            m_progressBar->setMaximumWidth(16777215);
+        }
     }
 }
