@@ -29,7 +29,7 @@ FileProcessor::ProcessResult FileProcessor::encryptFile(const QString &inputPath
     QString key = timestamp;
 
     QByteArray encryptedData = RC4Cipher::encrypt(content.toUtf8(), key);
-    QString base64Data = QString::fromUtf8(base64Encode(encryptedData));
+    QByteArray base64Data = base64Encode(encryptedData);
 
     emit progressChanged(70);
 
