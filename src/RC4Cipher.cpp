@@ -1,5 +1,6 @@
 #include "RC4Cipher.h"
 #include <algorithm>
+#include <QtGlobal>
 
 QByteArray RC4Cipher::ksa(const QString &key)
 {
