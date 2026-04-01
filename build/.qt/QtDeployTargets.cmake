@@ -1,0 +1,6 @@
+set(__QT_DEPLOY_TARGET_txt_crypt_rc4_tests_FILE /Users/wenjian/work/txt_crypt_rc4/build/tests/txt_crypt_rc4_tests)
+set(__QT_DEPLOY_TARGET_txt_crypt_rc4_tests_TYPE EXECUTABLE)
+set(__QT_DEPLOY_TARGET_validator_tests_FILE /Users/wenjian/work/txt_crypt_rc4/build/tests/validator_tests)
+set(__QT_DEPLOY_TARGET_validator_tests_TYPE EXECUTABLE)
+set(__QT_DEPLOY_TARGET_TxtCryptRC4_FILE /Users/wenjian/work/txt_crypt_rc4/build/TxtCryptRC4)
+set(__QT_DEPLOY_TARGET_TxtCryptRC4_TYPE EXECUTABLE)

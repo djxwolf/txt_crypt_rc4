@@ -125,6 +125,9 @@ void MainWindow::onBrowseInput()
 {
     QString fileName = QFileDialog::getOpenFileName(this, "选择输入文件", "", "文本文件 (*.txt);;所有文件 (*)");
     if (!fileName.isEmpty()) {
+        // 清除状态栏消息
+        clearStatus();
+
         // 阻止信号发射，避免重复处理
         QSignalBlocker blocker(m_inputFileEdit);
         m_inputFileEdit->setText(fileName);

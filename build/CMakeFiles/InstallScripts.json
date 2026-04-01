@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/wenjian/work/txt_crypt_rc4/build/cmake_install.cmake",
+		"/Users/wenjian/work/txt_crypt_rc4/build/tests/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
