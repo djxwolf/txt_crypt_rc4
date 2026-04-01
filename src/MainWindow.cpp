@@ -288,15 +288,18 @@ void MainWindow::onEncrypt()
             out << result.outputData;
             outputFile.close();
             showStatus("加密完成");
+            // 成功时进度条保持100%
+            m_progressBar->setValue(100);
         } else {
             showStatus("错误：无法写入输出文件");
+            // 失败时进度条复位
+            m_progressBar->setValue(0);
         }
     } else {
         showStatus("错误：" + result.errorMessage);
+        // 失败时进度条复位
+        m_progressBar->setValue(0);
     }
-
-    // 进度条保持100%
-    m_progressBar->setValue(100);
 }
 
 void MainWindow::onDecrypt()
@@ -338,15 +341,18 @@ void MainWindow::onDecrypt()
             out << result.outputData;
             outputFile.close();
             showStatus("解密完成");
+            // 成功时进度条保持100%
+            m_progressBar->setValue(100);
         } else {
             showStatus("错误：无法写入输出文件");
+            // 失败时进度条复位
+            m_progressBar->setValue(0);
         }
     } else {
         showStatus("错误：" + result.errorMessage);
+        // 失败时进度条复位
+        m_progressBar->setValue(0);
     }
-
-    // 进度条保持100%
-    m_progressBar->setValue(100);
 }
 
 void MainWindow::onProgressChanged(int percent)

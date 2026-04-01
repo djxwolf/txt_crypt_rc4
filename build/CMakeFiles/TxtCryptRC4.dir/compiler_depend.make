@@ -3702,6 +3702,7 @@ CMakeFiles/TxtCryptRC4.dir/src/MainWindow.cpp.o: /Users/wenjian/work/txt_crypt_r
   /opt/homebrew/opt/qt@6/lib/QtWidgets.framework/Headers/QMessageBox \
   /opt/homebrew/opt/qt@6/lib/QtWidgets.framework/Headers/QProgressBar \
   /opt/homebrew/opt/qt@6/lib/QtWidgets.framework/Headers/QPushButton \
+  /opt/homebrew/opt/qt@6/lib/QtWidgets.framework/Headers/QSizePolicy \
   /opt/homebrew/opt/qt@6/lib/QtWidgets.framework/Headers/QSpinBox \
   /opt/homebrew/opt/qt@6/lib/QtWidgets.framework/Headers/QStatusBar \
   /opt/homebrew/opt/qt@6/lib/QtWidgets.framework/Headers/QTextEdit \
@@ -6654,6 +6655,8 @@ CMakeFiles/TxtCryptRC4.dir/src/main.cpp.o: /Users/wenjian/work/txt_crypt_rc4/src
 /opt/homebrew/opt/qt@6/lib/QtWidgets.framework/Headers/qdialog.h:
 
 /opt/homebrew/opt/qt@6/lib/QtWidgets.framework/Headers/qboxlayout.h:
+
+/opt/homebrew/opt/qt@6/lib/QtWidgets.framework/Headers/QSizePolicy:
 
 /opt/homebrew/opt/qt@6/lib/QtWidgets.framework/Headers/QMessageBox:
 
