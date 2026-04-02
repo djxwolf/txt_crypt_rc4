@@ -11,7 +11,6 @@
 #include <QMessageBox>
 #include <QFile>
 #include <QTextStream>
-#include <QFontMetrics>
 #include <QSizePolicy>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -86,6 +85,29 @@ void MainWindow::setupUI()
     btnLayout->addWidget(m_decryptBtn, 1);
     mainLayout->addLayout(btnLayout);
 
+    // Progress bar below buttons
+    m_progressBar = new QProgressBar;
+    m_progressBar->setRange(0, 100);
+    m_progressBar->setValue(0);
+    m_progressBar->setTextVisible(true);
+    m_progressBar->setFormat("%p%");
+    m_progressBar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+    // Set chunk-style progress bar
+    m_progressBar->setStyleSheet(
+        "QProgressBar {"
+        "    border: 1px solid #ccc;"
+        "    border-radius: 3px;"
+        "    text-align: center;"
+        "    background-color: #f0f0f0;"
+        "}"
+        "QProgressBar::chunk {"
+        "    background-color: #4CAF50;"
+        "    width: 10px;"
+        "    margin: 1px;"
+        "}"
+    );
+    mainLayout->addWidget(m_progressBar);
+
     // ===== Content Area =====
     QHBoxLayout *contentLayout = new QHBoxLayout;
 
@@ -111,31 +133,6 @@ void MainWindow::setupUI()
     m_statusBar = new QStatusBar(this);
     setStatusBar(m_statusBar);
 
-    // Progress bar placed on right side of status bar, chunk style
-    m_progressBar = new QProgressBar;
-    m_progressBar->setRange(0, 100);
-    m_progressBar->setValue(0);
-    m_progressBar->setTextVisible(true);
-    m_progressBar->setFormat("%p%");
-    // Set progress bar to expand as much as possible
-    m_progressBar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-    // Set chunk-style progress bar
-    m_progressBar->setStyleSheet(
-        "QProgressBar {"
-        "    border: 1px solid #ccc;"
-        "    border-radius: 3px;"
-        "    text-align: center;"
-        "    background-color: #f0f0f0;"
-        "}"
-        "QProgressBar::chunk {"
-        "    background-color: #4CAF50;"
-        "    width: 10px;"
-        "    margin: 1px;"
-        "}"
-    );
-    // Add progress bar as permanent widget, placed on right side
-    m_statusBar->addPermanentWidget(m_progressBar, 1);
-
     // Initial message
     m_statusBar->showMessage("Ready");
 }
@@ -150,7 +147,6 @@ void MainWindow::connectSignals()
     connect(m_decryptBtn, &QPushButton::clicked, this, &MainWindow::onDecrypt);
     connect(m_processor, &FileProcessor::progressChanged, this, &MainWindow::onProgressChanged);
     connect(m_processor, &FileProcessor::statusChanged, this, &MainWindow::onStatusChanged);
-    connect(m_statusBar, &QStatusBar::messageChanged, this, &MainWindow::onStatusBarMessageChanged);
 }
 
 void MainWindow::onBrowseInput()
@@ -447,30 +443,4 @@ void MainWindow::showStatus(const QString &message)
 void MainWindow::clearStatus()
 {
     m_statusBar->clearMessage();
-}
-
-void MainWindow::onStatusBarMessageChanged(const QString &message)
-{
-    // Calculate required width for message text
-    QFontMetrics fm(m_statusBar->font());
-
-    if (message.isEmpty()) {
-        // When message is empty, progress bar fills entire status bar
-        m_progressBar->setMinimumWidth(0);
-        m_progressBar->setMaximumWidth(16777215); // QWIDGETSIZE_MAX
-    } else {
-        // When message is not empty, calculate message width and set progress bar to take remaining space
-        int messageWidth = fm.horizontalAdvance(message) + 30; // Add some margin
-        int totalWidth = m_statusBar->width();
-
-        if (totalWidth > messageWidth) {
-            int availableWidth = totalWidth - messageWidth;
-            m_progressBar->setMinimumWidth(availableWidth);
-            m_progressBar->setMaximumWidth(availableWidth);
-        } else {
-            // Status bar too narrow, give progress bar at least 100px
-            m_progressBar->setMinimumWidth(100);
-            m_progressBar->setMaximumWidth(16777215);
-        }
-    }
 }

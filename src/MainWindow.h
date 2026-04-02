@@ -28,7 +28,6 @@ private slots:
     void onDecrypt();
     void onProgressChanged(int percent);
     void onStatusChanged(const QString &status);
-    void onStatusBarMessageChanged(const QString &message);
 
 private:
     void setupUI();

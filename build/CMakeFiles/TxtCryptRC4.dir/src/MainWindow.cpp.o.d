@@ -1091,5 +1091,4 @@ CMakeFiles/TxtCryptRC4.dir/src/MainWindow.cpp.o: \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qdialogbuttonbox.h \
   /opt/homebrew/lib/QtCore.framework/Headers/QFile \
   /opt/homebrew/lib/QtCore.framework/Headers/QTextStream \
-  /opt/homebrew/lib/QtGui.framework/Headers/QFontMetrics \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QSizePolicy
