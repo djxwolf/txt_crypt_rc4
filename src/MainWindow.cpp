@@ -34,19 +34,12 @@ void MainWindow::setupUI()
     QWidget *centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
 
-    // Apply rounded corner style to main window
+    // Apply classic Windows-style square borders
     setStyleSheet(R"(
-        QMainWindow {
-            background-color: #f5f5f5;
-        }
-        QWidget {
-            background-color: #f5f5f5;
-            font-size: 13px;
-        }
         QGroupBox {
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            margin-top: 10px;
+            border: 2px solid #7f8c8d;
+            border-radius: 0px;
+            margin-top: 6px;
             padding-top: 10px;
             font-weight: bold;
         }
@@ -56,55 +49,61 @@ void MainWindow::setupUI()
             padding: 0 5px;
         }
         QPushButton {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 8px 16px;
-            font-weight: 500;
+            background-color: #e0e0e0;
+            color: #000;
+            border: 1px solid #999;
+            border-radius: 0px;
+            padding: 6px 20px;
+            min-height: 24px;
         }
         QPushButton:hover {
-            background-color: #45a049;
+            background-color: #d0d0d0;
+            border: 1px solid #666;
         }
         QPushButton:pressed {
-            background-color: #3d8b40;
+            background-color: #c0c0c0;
+            border: 1px solid #333;
         }
         QPushButton:disabled {
-            background-color: #cccccc;
-            color: #666666;
+            background-color: #f0f0f0;
+            color: #888;
         }
         QLineEdit {
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            padding: 6px;
-            background-color: white;
-        }
-        QLineEdit:focus {
-            border: 1px solid #4CAF50;
-        }
-        QSpinBox {
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            border: 2px solid #999;
+            border-radius: 0px;
             padding: 4px;
             background-color: white;
         }
+        QLineEdit:focus {
+            border: 2px solid #0078d4;
+        }
+        QSpinBox {
+            border: 2px solid #999;
+            border-radius: 0px;
+            padding: 2px;
+            background-color: white;
+        }
+        QSpinBox:focus {
+            border: 2px solid #0078d4;
+        }
         QTextEdit {
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            border: 2px solid #999;
+            border-radius: 0px;
             background-color: white;
         }
         QCheckBox {
-            spacing: 5px;
+            spacing: 6px;
         }
         QCheckBox::indicator {
-            width: 18px;
-            height: 18px;
-            border-radius: 3px;
-            border: 1px solid #ccc;
+            width: 16px;
+            height: 16px;
+            border-radius: 0px;
+            border: 2px solid #999;
+            background-color: white;
         }
         QCheckBox::indicator:checked {
-            background-color: #4CAF50;
-            border: 1px solid #4CAF50;
+            background-color: #0078d4;
+            border: 2px solid #0078d4;
         }
     )");
 
