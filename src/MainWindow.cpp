@@ -69,13 +69,17 @@ void MainWindow::setupUI()
 
     mainLayout->addWidget(controlGroup);
 
-    // Action buttons
+    // Action buttons - evenly distributed across the full width
     QHBoxLayout *btnLayout = new QHBoxLayout;
     m_encryptBtn = new QPushButton("Encrypt");
     m_decryptBtn = new QPushButton("Decrypt");
-    btnLayout->addWidget(m_encryptBtn);
-    btnLayout->addWidget(m_decryptBtn);
-    btnLayout->addStretch();
+
+    // Make buttons expand to fill available space
+    m_encryptBtn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+    m_decryptBtn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+
+    btnLayout->addWidget(m_encryptBtn, 1);
+    btnLayout->addWidget(m_decryptBtn, 1);
     mainLayout->addLayout(btnLayout);
 
     // ===== Content Area =====
