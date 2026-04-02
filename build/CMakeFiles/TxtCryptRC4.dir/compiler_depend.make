@@ -4362,7 +4362,6 @@ CMakeFiles/TxtCryptRC4.dir/src/MainWindow.cpp.o: /Users/wenjian/work/txt_crypt_r
   /opt/homebrew/lib/QtCore.framework/Headers/qversiontagging.h \
   /opt/homebrew/lib/QtCore.framework/Headers/qxptype_traits.h \
   /opt/homebrew/lib/QtCore.framework/Headers/qyieldcpu.h \
-  /opt/homebrew/lib/QtGui.framework/Headers/QFontMetrics \
   /opt/homebrew/lib/QtGui.framework/Headers/qaction.h \
   /opt/homebrew/lib/QtGui.framework/Headers/qbitmap.h \
   /opt/homebrew/lib/QtGui.framework/Headers/qbrush.h \
@@ -7351,8 +7350,6 @@ CMakeFiles/TxtCryptRC4.dir/src/main.cpp.o: /Users/wenjian/work/txt_crypt_rc4/src
 /opt/homebrew/lib/QtWidgets.framework/Headers/QVBoxLayout:
 
 /opt/homebrew/lib/QtWidgets.framework/Headers/QSizePolicy:
-
-/opt/homebrew/lib/QtGui.framework/Headers/QFontMetrics:
 
 /opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h:
 

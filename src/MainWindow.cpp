@@ -12,6 +12,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QSizePolicy>
+#include <QLabel>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -20,7 +21,6 @@ MainWindow::MainWindow(QWidget *parent)
     setupUI();
     connectSignals();
 
-    // Set default values
     m_inPlaceCheckBox->setChecked(true);
     m_timeoutSpinBox->setValue(600);
 }
@@ -33,35 +33,27 @@ void MainWindow::setupUI()
     QWidget *centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
 
-    // Using default Fusion style - no custom stylesheet needed
-
     QVBoxLayout *mainLayout = new QVBoxLayout(centralWidget);
-    mainLayout->setContentsMargins(10, 10, 10, 10);
-    mainLayout->setSpacing(10);
 
-    // ===== Control Area =====
+    // Control Area
     QGroupBox *controlGroup = new QGroupBox("File Operations");
     QGridLayout *controlLayout = new QGridLayout(controlGroup);
 
-    // Input file
     controlLayout->addWidget(new QLabel("Input File:"), 0, 0);
     m_inputFileEdit = new QLineEdit;
     controlLayout->addWidget(m_inputFileEdit, 0, 1);
     m_browseInputBtn = new QPushButton("Browse...");
     controlLayout->addWidget(m_browseInputBtn, 0, 2);
 
-    // Output file
     controlLayout->addWidget(new QLabel("Output File:"), 1, 0);
     m_outputFileEdit = new QLineEdit;
     controlLayout->addWidget(m_outputFileEdit, 1, 1);
     m_browseOutputBtn = new QPushButton("Browse...");
     controlLayout->addWidget(m_browseOutputBtn, 1, 2);
 
-    // In-place option
     m_inPlaceCheckBox = new QCheckBox("In-place (overwrite original file)");
     controlLayout->addWidget(m_inPlaceCheckBox, 2, 0, 1, 3);
 
-    // Timeout setting
     controlLayout->addWidget(new QLabel("Timeout:"), 3, 0);
     m_timeoutSpinBox = new QSpinBox;
     m_timeoutSpinBox->setMinimum(-1);
@@ -72,27 +64,23 @@ void MainWindow::setupUI()
 
     mainLayout->addWidget(controlGroup);
 
-    // Action buttons - evenly distributed across the full width
+    // Action Buttons
     QHBoxLayout *btnLayout = new QHBoxLayout;
     m_encryptBtn = new QPushButton("Encrypt");
     m_decryptBtn = new QPushButton("Decrypt");
-
-    // Make buttons expand to fill available space
     m_encryptBtn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     m_decryptBtn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-
     btnLayout->addWidget(m_encryptBtn, 1);
     btnLayout->addWidget(m_decryptBtn, 1);
     mainLayout->addLayout(btnLayout);
 
-    // Progress bar below buttons
+    // Progress Bar
     m_progressBar = new QProgressBar;
     m_progressBar->setRange(0, 100);
     m_progressBar->setValue(0);
     m_progressBar->setTextVisible(true);
     m_progressBar->setFormat("%p%");
     m_progressBar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-    // Set chunk-style progress bar
     m_progressBar->setStyleSheet(
         "QProgressBar {"
         "    border: 1px solid #ccc;"
@@ -108,10 +96,9 @@ void MainWindow::setupUI()
     );
     mainLayout->addWidget(m_progressBar);
 
-    // ===== Content Area =====
+    // Content Area
     QHBoxLayout *contentLayout = new QHBoxLayout;
 
-    // Left: Original content
     QGroupBox *originalGroup = new QGroupBox("Original Content");
     QVBoxLayout *originalLayout = new QVBoxLayout(originalGroup);
     m_originalContentEdit = new QTextEdit;
@@ -119,7 +106,6 @@ void MainWindow::setupUI()
     originalLayout->addWidget(m_originalContentEdit);
     contentLayout->addWidget(originalGroup);
 
-    // Right: Processed result
     QGroupBox *resultGroup = new QGroupBox("Processed Result");
     QVBoxLayout *resultLayout = new QVBoxLayout(resultGroup);
     m_resultContentEdit = new QTextEdit;
@@ -129,12 +115,19 @@ void MainWindow::setupUI()
 
     mainLayout->addLayout(contentLayout);
 
-    // ===== Status Bar =====
+    // Status Bar with centered messages
     m_statusBar = new QStatusBar(this);
     setStatusBar(m_statusBar);
+    m_statusBar->setStyleSheet("QStatusBar::item { border: none; }");
 
-    // Initial message
+    QLabel *statusLabel = new QLabel;
+    statusLabel->setAlignment(Qt::AlignCenter);
+    m_statusBar->addPermanentWidget(statusLabel, 1);
     m_statusBar->showMessage("Ready");
+
+    connect(m_statusBar, &QStatusBar::messageChanged, [statusLabel](const QString &message) {
+        statusLabel->setText(message);
+    });
 }
 
 void MainWindow::connectSignals()
@@ -153,20 +146,13 @@ void MainWindow::onBrowseInput()
 {
     QString fileName = QFileDialog::getOpenFileName(this, "Select Input File", "", "Text Files (*.txt);;All Files (*)");
     if (!fileName.isEmpty()) {
-        // Clear status bar message
         clearStatus();
-
-        // Reset progress bar
         m_progressBar->setValue(0);
 
-        // Block signal emission to avoid duplicate processing
         QSignalBlocker blocker(m_inputFileEdit);
         m_inputFileEdit->setText(fileName);
-
-        // Clear previous results
         m_resultContentEdit->clear();
 
-        // Read and display original content
         QFile file(fileName);
         if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
             QTextStream in(&file);
@@ -174,7 +160,6 @@ void MainWindow::onBrowseInput()
             m_originalContentEdit->setText(content);
             file.close();
 
-            // Determine if file is encrypted based on content
             bool isEncrypted = isEncryptedFile(content);
             if (isEncrypted) {
                 m_encryptBtn->setEnabled(false);
@@ -189,13 +174,9 @@ void MainWindow::onBrowseInput()
 
 void MainWindow::onInputFileChanged(const QString &text)
 {
-    // Clear status bar message
     clearStatus();
-
-    // Reset progress bar
     m_progressBar->setValue(0);
 
-    // If input is empty, clear preview and disable buttons
     if (text.isEmpty()) {
         m_originalContentEdit->clear();
         m_resultContentEdit->clear();
@@ -204,13 +185,9 @@ void MainWindow::onInputFileChanged(const QString &text)
         return;
     }
 
-    // Parse input file path (supports paths relative to home directory)
     QString inputPath = resolveInputPath(text);
-
-    // Clear previous results
     m_resultContentEdit->clear();
 
-    // Read and display original content
     QFile file(inputPath);
     if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QTextStream in(&file);
@@ -218,7 +195,6 @@ void MainWindow::onInputFileChanged(const QString &text)
         m_originalContentEdit->setText(content);
         file.close();
 
-        // Determine if file is encrypted based on content
         bool isEncrypted = isEncryptedFile(content);
         if (isEncrypted) {
             m_encryptBtn->setEnabled(false);
@@ -228,7 +204,6 @@ void MainWindow::onInputFileChanged(const QString &text)
             m_decryptBtn->setEnabled(false);
         }
     } else {
-        // File cannot be read, clear preview and disable buttons
         m_originalContentEdit->clear();
         m_encryptBtn->setEnabled(false);
         m_decryptBtn->setEnabled(false);
@@ -261,7 +236,6 @@ void MainWindow::onEncrypt()
         return;
     }
 
-    // Parse input file path (supports paths relative to home directory)
     QString inputPath = resolveInputPath(userPath);
 
     QString outputPath;
@@ -273,7 +247,6 @@ void MainWindow::onEncrypt()
             showStatus("Please specify an output file");
             return;
         }
-        // Parse output path (supports paths relative to input file)
         outputPath = resolveOutputPath(inputPath, userOutputPath);
     }
 
@@ -285,23 +258,19 @@ void MainWindow::onEncrypt()
     if (result.success) {
         m_resultContentEdit->setText(result.outputData);
 
-        // Write output file
         QFile outputFile(outputPath);
         if (outputFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
             QTextStream out(&outputFile);
             out << result.outputData;
             outputFile.close();
             showStatus("Encryption completed");
-            // Progress bar stays at 100% on success
             m_progressBar->setValue(100);
         } else {
             showStatus("Error: Cannot write output file");
-            // Reset progress bar on failure
             m_progressBar->setValue(0);
         }
     } else {
         showStatus("Error: " + result.errorMessage);
-        // Reset progress bar on failure
         m_progressBar->setValue(0);
     }
 }
@@ -314,7 +283,6 @@ void MainWindow::onDecrypt()
         return;
     }
 
-    // Parse input file path (supports paths relative to home directory)
     QString inputPath = resolveInputPath(userPath);
 
     QString outputPath;
@@ -326,7 +294,6 @@ void MainWindow::onDecrypt()
             showStatus("Please specify an output file");
             return;
         }
-        // Parse output path (supports paths relative to input file)
         outputPath = resolveOutputPath(inputPath, userOutputPath);
     }
 
@@ -338,23 +305,19 @@ void MainWindow::onDecrypt()
     if (result.success) {
         m_resultContentEdit->setText(result.outputData);
 
-        // Write output file
         QFile outputFile(outputPath);
         if (outputFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
             QTextStream out(&outputFile);
             out << result.outputData;
             outputFile.close();
             showStatus("Decryption completed");
-            // Progress bar stays at 100% on success
             m_progressBar->setValue(100);
         } else {
             showStatus("Error: Cannot write output file");
-            // Reset progress bar on failure
             m_progressBar->setValue(0);
         }
     } else {
         showStatus("Error: " + result.errorMessage);
-        // Reset progress bar on failure
         m_progressBar->setValue(0);
     }
 }
@@ -371,26 +334,21 @@ void MainWindow::onStatusChanged(const QString &status)
 
 bool MainWindow::isEncryptedFile(const QString &content)
 {
-    // Check if content matches encrypted format: "timestamp@encryptedData"
     QString trimmed = content.trimmed();
 
-    // Basic format check: must contain @ symbol
     if (!trimmed.contains('@')) {
         return false;
     }
 
-    // Use Validator's parsing method to validate format
     QString timestamp, encryptedData;
     if (!Validator::parseEncryptedFormat(trimmed, timestamp, encryptedData)) {
         return false;
     }
 
-    // Validate timestamp is a reasonable second-level timestamp (not random numbers)
     if (!Validator::isValidTimestamp(timestamp)) {
         return false;
     }
 
-    // Validate encrypted data is valid Base64 string
     if (!Validator::isValidBase64(encryptedData)) {
         return false;
     }
@@ -402,19 +360,14 @@ QString MainWindow::resolveOutputPath(const QString &inputPath, const QString &o
 {
     QFileInfo outputFileInfo(outputPath);
 
-    // If output path is absolute, use directly
     if (outputFileInfo.isAbsolute()) {
         return outputPath;
     }
 
-    // Output path is relative, resolve based on input file's directory
     QFileInfo inputFileInfo(inputPath);
     QString inputDir = inputFileInfo.absolutePath();
-
-    // Combine input file directory and output relative path
     QString resolvedPath = QDir(inputDir).filePath(outputPath);
 
-    // Return normalized absolute path
     return QDir::cleanPath(resolvedPath);
 }
 
@@ -422,16 +375,13 @@ QString MainWindow::resolveInputPath(const QString &userPath)
 {
     QFileInfo fileInfo(userPath);
 
-    // If already absolute path, return directly
     if (fileInfo.isAbsolute()) {
         return userPath;
     }
 
-    // Relative path: relative to user's home directory
     QString homePath = QDir::homePath();
     QString resolvedPath = QDir(homePath).filePath(userPath);
 
-    // Return normalized absolute path
     return QDir::cleanPath(resolvedPath);
 }
 
