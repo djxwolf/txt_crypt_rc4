@@ -18,6 +18,12 @@ public:
     // 解析加密格式 "timestamp@encryptedData"
     static bool parseEncryptedFormat(const QString &input, QString &timestamp, QString &encryptedData);
 
+    // 验证是否为有效的时间戳（秒级）
+    static bool isValidTimestamp(const QString &timestampStr);
+
+    // 验证是否为有效的 Base64 字符串
+    static bool isValidBase64(const QString &str);
+
     // 获取当前时间戳（秒）
     static qint64 getCurrentTimestamp();
 

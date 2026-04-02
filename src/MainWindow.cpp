@@ -381,15 +381,13 @@ bool MainWindow::isEncryptedFile(const QString &content)
         return false;
     }
 
-    // 进一步验证：时间戳应该是数字
-    bool ok;
-    timestamp.toLongLong(&ok);
-    if (!ok) {
+    // 验证时间戳是否为合理的秒级时间戳（不是随机数字）
+    if (!Validator::isValidTimestamp(timestamp)) {
         return false;
     }
 
-    // 加密数据不应该是空
-    if (encryptedData.isEmpty()) {
+    // 验证加密数据是否为有效的 Base64 字符串
+    if (!Validator::isValidBase64(encryptedData)) {
         return false;
     }
 

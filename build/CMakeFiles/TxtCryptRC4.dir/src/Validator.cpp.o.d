@@ -954,4 +954,6 @@ CMakeFiles/TxtCryptRC4.dir/src/Validator.cpp.o: \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/q20utility.h \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qobject.h \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qobject_impl.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qbindingstorage.h
+  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qbindingstorage.h \
+  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/QRegularExpression \
+  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qregularexpression.h
