@@ -34,78 +34,7 @@ void MainWindow::setupUI()
     QWidget *centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
 
-    // Apply classic Windows-style square borders
-    setStyleSheet(R"(
-        QGroupBox {
-            border: 2px solid #7f8c8d;
-            border-radius: 0px;
-            margin-top: 6px;
-            padding-top: 10px;
-            font-weight: bold;
-        }
-        QGroupBox::title {
-            subcontrol-origin: margin;
-            subcontrol-position: top left;
-            padding: 0 5px;
-        }
-        QPushButton {
-            background-color: #e0e0e0;
-            color: #000;
-            border: 1px solid #999;
-            border-radius: 0px;
-            padding: 6px 20px;
-            min-height: 24px;
-        }
-        QPushButton:hover {
-            background-color: #d0d0d0;
-            border: 1px solid #666;
-        }
-        QPushButton:pressed {
-            background-color: #c0c0c0;
-            border: 1px solid #333;
-        }
-        QPushButton:disabled {
-            background-color: #f0f0f0;
-            color: #888;
-        }
-        QLineEdit {
-            border: 2px solid #999;
-            border-radius: 0px;
-            padding: 4px;
-            background-color: white;
-        }
-        QLineEdit:focus {
-            border: 2px solid #0078d4;
-        }
-        QSpinBox {
-            border: 2px solid #999;
-            border-radius: 0px;
-            padding: 2px;
-            background-color: white;
-        }
-        QSpinBox:focus {
-            border: 2px solid #0078d4;
-        }
-        QTextEdit {
-            border: 2px solid #999;
-            border-radius: 0px;
-            background-color: white;
-        }
-        QCheckBox {
-            spacing: 6px;
-        }
-        QCheckBox::indicator {
-            width: 16px;
-            height: 16px;
-            border-radius: 0px;
-            border: 2px solid #999;
-            background-color: white;
-        }
-        QCheckBox::indicator:checked {
-            background-color: #0078d4;
-            border: 2px solid #0078d4;
-        }
-    )");
+    // Using default Fusion style - no custom stylesheet needed
 
     QVBoxLayout *mainLayout = new QVBoxLayout(centralWidget);
     mainLayout->setContentsMargins(10, 10, 10, 10);
