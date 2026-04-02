@@ -7,6 +7,11 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
+# Add C++ standard library include path for macOS
+if(APPLE)
+    include_directories(SYSTEM /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1)
+endif()
+
 # Find Qt packages
 # Try Qt6 first, then Qt5
 find_package(Qt6 QUIET COMPONENTS Core Widgets)

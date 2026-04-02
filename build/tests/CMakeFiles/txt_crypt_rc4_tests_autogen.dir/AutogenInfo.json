@@ -98,13 +98,13 @@
 	],
 	"MOC_INCLUDES" : 
 	[
+		"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1",
 		"/opt/homebrew/lib/QtTest.framework/Headers",
 		"/opt/homebrew/lib/QtTest.framework",
 		"/opt/homebrew/lib/QtCore.framework/Headers",
 		"/opt/homebrew/lib/QtCore.framework",
 		"/opt/homebrew/share/qt/mkspecs/macx-clang",
 		"/opt/homebrew/include",
-		"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1",
 		"/Library/Developer/CommandLineTools/usr/include/c++/v1",
 		"/Library/Developer/CommandLineTools/usr/lib/clang/21/include",
 		"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include",
