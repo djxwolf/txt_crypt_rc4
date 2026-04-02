@@ -44,6 +44,7 @@ if (file.exists()) {
 - Use `//` for single-line comments
 - Keep comments clear and concise
 - Comment complex logic, not obvious code
+- No unnecessary section dividers (e.g., `// ===== Section =====`)
 
 ### Signal/Slot Naming
 - Use `on` prefix for slot functions (e.g., `onBrowseInput`, `onStatusChanged`)
@@ -53,13 +54,73 @@ if (file.exists()) {
 
 ### Error Messages
 - Be specific and helpful
-- Start with lowercase for continuation messages
 - Include context when useful
 
 Example:
 ```cpp
 return {false, "Cannot open input file: " + inputFile.errorString(), ""};
 ```
+
+## Project Architecture
+
+### Dual Interface Design
+
+This project provides both GUI and CLI interfaces:
+
+**GUI Application (`TxtCryptRC4`)**
+- Qt Widgets based
+- Event-driven architecture
+- Progress tracking with signals/slots
+- Status bar for user feedback
+
+**CLI Tool (`txt_crypt_cli`)**
+- QCoreApplication based
+- Command line argument parsing
+- Stream-based I/O
+- Exit codes for error handling
+
+### Shared Components
+
+Both interfaces use these core modules:
+
+| Component | File(s) | Purpose |
+|-----------|----------|---------|
+| RC4 Cipher | `RC4Cipher.h/cpp` | Encryption/decryption algorithm |
+| Validator | `Validator.h/cpp` | Timestamp validation, format parsing, Base64 validation |
+| File Processor | `FileProcessor.h/cpp` | GUI-only: coordinates operations, emits progress signals |
+
+### Core Algorithm
+
+**RC4 Implementation:**
+- KSA (Key Scheduling Algorithm) - Initializes permutation
+- PRGA (Pseudo-Random Generation Algorithm) - Generates keystream
+- Symmetric encryption - encryption and decryption are identical
+
+**File Format:**
+```
+timestamp@Base64-encoded-ciphertext
+```
+
+## Build System
+
+### CMake Configuration
+
+- Minimum CMake version: 3.16
+- C++17 standard
+- Qt automoc/rcc/uic enabled
+- macOS: Includes C++ stdlib path for compatibility
+
+### Executables
+
+Two separate executables are built:
+
+1. **TxtCryptRC4** - GUI application
+   - Links: Qt6::Core, Qt6::Widgets
+   - Requires: display server
+
+2. **txt_crypt_cli** - CLI tool
+   - Links: Qt6::Core only
+   - Headless operation
 
 ## Commit Messages
 
@@ -78,10 +139,59 @@ Types:
 - `docs`: Documentation changes
 - `chore`: Build/process changes
 - `style`: Code style changes (no logic change)
+- `revert`: Revert previous change
 
 Examples:
 ```
-feat: add progress bar to status bar
+feat: add command line interface tool
 fix: reset progress bar on encryption failure
 docs: update installation instructions
+revert: restore default Fusion style
 ```
+
+## Versioning
+
+- Semantic versioning: MAJOR.MINOR.PATCH
+- MAJOR: Breaking changes
+- MINOR: New features (backward compatible)
+- PATCH: Bug fixes
+
+## Testing
+
+### Unit Tests
+
+Located in `tests/` directory:
+- `test_rc4.cpp` - RC4 algorithm tests
+- `test_validator.cpp` - Validation logic tests
+
+### Running Tests
+
+```bash
+cd build
+ctest --output-on-failure
+
+# Or run individual tests
+./tests/txt_crypt_rc4_tests
+./tests/validator_tests
+```
+
+## Platform Support
+
+### macOS
+- Developed on macOS
+- Uses Homebrew Qt6
+- Native look with Fusion style
+
+### Linux
+- Should work with Qt6 packages
+- May require package manager dependencies
+
+### Windows
+- Not tested but should work with MinGW/MSVC Qt6
+
+## Security Considerations
+
+- RC4 is suitable for educational purposes and non-critical data
+- Timestamp as key provides basic protection
+- Not suitable for high-security applications
+- No key derivation function used
