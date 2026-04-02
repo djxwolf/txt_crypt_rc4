@@ -1,10 +1,10 @@
 tests/CMakeFiles/txt_crypt_rc4_tests.dir/__/src/RC4Cipher.cpp.o: \
   /Users/wenjian/work/txt_crypt_rc4/src/RC4Cipher.cpp \
   /Users/wenjian/work/txt_crypt_rc4/src/RC4Cipher.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/QString \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qstring.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qchar.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qglobal.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/QString \
+  /opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qchar.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qglobal.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/type_traits \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__config_site \
@@ -285,33 +285,33 @@ tests/CMakeFiles/txt_crypt_rc4_tests.dir/__/src/RC4Cipher.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_static_assert.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/stdbool.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/21/include/stdbool.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qtcoreglobal.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qtversionchecks.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qtconfiginclude.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qconfig.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qtcore-config.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qtconfigmacros.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qtdeprecationdefinitions.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qcompilerdetection.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qprocessordetection.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qsystemdetection.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qtcoreglobal.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qtversionchecks.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qtconfiginclude.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qconfig.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qtcore-config.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qtconfigmacros.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qtdeprecationdefinitions.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qcompilerdetection.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qprocessordetection.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qsystemdetection.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/TargetConditionals.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/atomic \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qtcoreexports.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qtdeprecationmarkers.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qtclasshelpermacros.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qtpreprocessorsupport.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qassert.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qtnoop.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qtypes.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qtversion.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qtypeinfo.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qcontainerfwd.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qsysinfo.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qlogging.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qflags.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qcompare_impl.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qtcoreexports.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qtdeprecationmarkers.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qtclasshelpermacros.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qtpreprocessorsupport.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qassert.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qtnoop.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qtypes.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qtversion.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qtypeinfo.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qcontainerfwd.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qsysinfo.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qlogging.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qflags.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qcompare_impl.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/algorithm \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/adjacent_find.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/comp.h \
@@ -687,31 +687,31 @@ tests/CMakeFiles/txt_crypt_rc4_tests.dir/__/src/RC4Cipher.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/temporary_buffer.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/stdexcept \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/optional \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qatomic.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qbasicatomic.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qatomic_cxx11.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qgenericatomic.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qyieldcpu.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qconstructormacros.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qdarwinhelpers.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qexceptionhandling.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qforeach.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qttypetraits.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qfunctionpointer.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qglobalstatic.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qmalloc.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qminmax.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qnumeric.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/q20type_traits.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qoverload.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qswap.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qtenvironmentvariables.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qtresource.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qttranslation.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qversiontagging.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qcompare.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qstdlibdetection.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qcomparehelpers.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qatomic.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qbasicatomic.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qatomic_cxx11.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qgenericatomic.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qyieldcpu.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qconstructormacros.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qdarwinhelpers.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qexceptionhandling.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qforeach.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qttypetraits.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qfunctionpointer.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qglobalstatic.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qmalloc.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qminmax.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qnumeric.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/q20type_traits.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qoverload.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qswap.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qtenvironmentvariables.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qtresource.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qttranslation.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qversiontagging.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qcompare.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qstdlibdetection.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qcomparehelpers.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/functional \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/binary_negate.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/bind.h \
@@ -857,31 +857,31 @@ tests/CMakeFiles/txt_crypt_rc4_tests.dir/__/src/RC4Cipher.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__locale_dir/wbuffer_convert.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__locale_dir/wstring_convert.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdarg \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qstringview.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qbytearray.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qrefcount.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qnamespace.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qtmetamacros.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qarraydata.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qpair.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qarraydatapointer.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qarraydataops.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qcontainertools_impl.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qxptype_traits.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/q23type_traits.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/q20functional.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/q20memory.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/q17memory.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qbytearrayalgorithms.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qbytearrayview.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qstringfwd.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qstringalgorithms.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qlatin1stringview.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qanystringview.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qutf8stringview.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qstringtokenizer.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qstringbuilder.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qstringconverter.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qstringconverter_base.h \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/QByteArray \
-  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/QtGlobal
+  /opt/homebrew/lib/QtCore.framework/Headers/qstringview.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qbytearray.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qrefcount.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qnamespace.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qtmetamacros.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qarraydata.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qpair.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qarraydatapointer.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qarraydataops.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qcontainertools_impl.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qxptype_traits.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/q23type_traits.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/q20functional.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/q20memory.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/q17memory.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qbytearrayalgorithms.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qbytearrayview.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qstringfwd.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qstringalgorithms.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qlatin1stringview.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qanystringview.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qutf8stringview.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qstringtokenizer.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qstringbuilder.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qstringconverter.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/qstringconverter_base.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/QByteArray \
+  /opt/homebrew/lib/QtCore.framework/Headers/QtGlobal

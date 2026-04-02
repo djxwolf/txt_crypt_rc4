@@ -68,8 +68,8 @@ include tests/CMakeFiles/validator_tests_autogen.dir/progress.make
 
 tests/CMakeFiles/validator_tests_autogen: tests/validator_tests_autogen/timestamp
 
-tests/validator_tests_autogen/timestamp: /opt/homebrew/opt/qt@6/share/qt/libexec/moc
-tests/validator_tests_autogen/timestamp: /opt/homebrew/opt/qt@6/share/qt/libexec/uic
+tests/validator_tests_autogen/timestamp: /opt/homebrew/share/qt/libexec/moc
+tests/validator_tests_autogen/timestamp: /opt/homebrew/share/qt/libexec/uic
 tests/validator_tests_autogen/timestamp: tests/CMakeFiles/validator_tests_autogen.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target validator_tests"
 	cd /Users/wenjian/work/txt_crypt_rc4/build/tests && /opt/homebrew/bin/cmake -E cmake_autogen /Users/wenjian/work/txt_crypt_rc4/build/tests/CMakeFiles/validator_tests_autogen.dir/AutogenInfo.json ""

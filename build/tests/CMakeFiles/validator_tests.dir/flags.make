@@ -4,9 +4,9 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DQT_CORE_LIB -DQT_NO_DEBUG -DQT_TESTCASE_BUILDDIR=\"/Users/wenjian/work/txt_crypt_rc4/build/tests\" -DQT_TESTCASE_SOURCEDIR=\"/Users/wenjian/work/txt_crypt_rc4/tests\" -DQT_TESTLIB_LIB
 
-CXX_INCLUDES = -I/Users/wenjian/work/txt_crypt_rc4/build/tests/validator_tests_autogen/include -isystem /opt/homebrew/opt/qt@6/lib/QtTest.framework/Headers -iframework /opt/homebrew/opt/qt@6/lib -isystem /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers -isystem /opt/homebrew/opt/qt@6/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt@6/include
+CXX_INCLUDES = -I/Users/wenjian/work/txt_crypt_rc4/build/tests/validator_tests_autogen/include -isystem /opt/homebrew/lib/QtTest.framework/Headers -iframework /opt/homebrew/lib -isystem /opt/homebrew/lib/QtCore.framework/Headers -isystem /opt/homebrew/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/include
 
-CXX_FLAGSarm64 = -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -stdlib=libc++ -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
+CXX_FLAGSarm64 = -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -std=gnu++17 -arch arm64
 
-CXX_FLAGS = -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -stdlib=libc++ -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
+CXX_FLAGS = -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -std=gnu++17 -arch arm64
 

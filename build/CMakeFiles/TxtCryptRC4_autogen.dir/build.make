@@ -68,8 +68,8 @@ include CMakeFiles/TxtCryptRC4_autogen.dir/progress.make
 
 CMakeFiles/TxtCryptRC4_autogen: TxtCryptRC4_autogen/timestamp
 
-TxtCryptRC4_autogen/timestamp: /opt/homebrew/opt/qt@6/share/qt/libexec/moc
-TxtCryptRC4_autogen/timestamp: /opt/homebrew/opt/qt@6/share/qt/libexec/uic
+TxtCryptRC4_autogen/timestamp: /opt/homebrew/share/qt/libexec/moc
+TxtCryptRC4_autogen/timestamp: /opt/homebrew/share/qt/libexec/uic
 TxtCryptRC4_autogen/timestamp: CMakeFiles/TxtCryptRC4_autogen.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target TxtCryptRC4"
 	/opt/homebrew/bin/cmake -E cmake_autogen /Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles/TxtCryptRC4_autogen.dir/AutogenInfo.json ""

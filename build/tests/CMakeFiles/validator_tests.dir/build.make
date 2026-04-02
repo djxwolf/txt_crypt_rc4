@@ -69,8 +69,8 @@ include tests/CMakeFiles/validator_tests.dir/progress.make
 # Include the compile flags for this target's objects.
 include tests/CMakeFiles/validator_tests.dir/flags.make
 
-tests/validator_tests_autogen/timestamp: /opt/homebrew/opt/qt@6/share/qt/libexec/moc
-tests/validator_tests_autogen/timestamp: /opt/homebrew/opt/qt@6/share/qt/libexec/uic
+tests/validator_tests_autogen/timestamp: /opt/homebrew/share/qt/libexec/moc
+tests/validator_tests_autogen/timestamp: /opt/homebrew/share/qt/libexec/uic
 tests/validator_tests_autogen/timestamp: tests/CMakeFiles/validator_tests.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target validator_tests"
 	cd /Users/wenjian/work/txt_crypt_rc4/build/tests && /opt/homebrew/bin/cmake -E cmake_autogen /Users/wenjian/work/txt_crypt_rc4/build/tests/CMakeFiles/validator_tests_autogen.dir/AutogenInfo.json ""
@@ -134,8 +134,8 @@ tests/validator_tests: tests/CMakeFiles/validator_tests.dir/validator_tests_auto
 tests/validator_tests: tests/CMakeFiles/validator_tests.dir/test_validator.cpp.o
 tests/validator_tests: tests/CMakeFiles/validator_tests.dir/__/src/Validator.cpp.o
 tests/validator_tests: tests/CMakeFiles/validator_tests.dir/build.make
-tests/validator_tests: /opt/homebrew/opt/qt@6/lib/QtTest.framework/Versions/A/QtTest
-tests/validator_tests: /opt/homebrew/opt/qt@6/lib/QtCore.framework/Versions/A/QtCore
+tests/validator_tests: /opt/homebrew/lib/QtTest.framework/Versions/A/QtTest
+tests/validator_tests: /opt/homebrew/lib/QtCore.framework/Versions/A/QtCore
 tests/validator_tests: tests/CMakeFiles/validator_tests.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable validator_tests"
 	cd /Users/wenjian/work/txt_crypt_rc4/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/validator_tests.dir/link.txt --verbose=$(VERBOSE)
