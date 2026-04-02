@@ -1,0 +1,36 @@
+{
+    "cmake.configureOnOpen": true,
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.defaultVariants": {
+        "buildType": "Debug"
+    },
+    "cmake.sourceDirectory": "${workspaceFolder}",
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "files.associations": {
+        "*.h": "cpp",
+        "QLineEdit": "cpp",
+        "QPushButton": "cpp",
+        "QCheckBox": "cpp",
+        "QSpinBox": "cpp",
+        "QProgressBar": "cpp",
+        "QTextEdit": "cpp",
+        "QLabel": "cpp",
+        "QStatusBar": "cpp",
+        "QMainWindow": "cpp",
+        "QVBoxLayout": "cpp",
+        "QHBoxLayout": "cpp",
+        "QGridLayout": "cpp",
+        "QGroupBox": "cpp",
+        "QFileDialog": "cpp",
+        "QMessageBox": "cpp",
+        "QFile": "cpp",
+        "QTextStream": "cpp",
+        "QString": "cpp",
+        "QByteArray": "cpp",
+        "QDir": "cpp",
+        "QFileInfo": "cpp",
+        "QDateTime": "cpp",
+        "QSignalBlocker": "cpp",
+        "QRegularExpression": "cpp"
+    }
+}
