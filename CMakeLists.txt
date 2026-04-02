@@ -41,6 +41,7 @@ set(HEADERS
     src/Validator.h
 )
 
+# GUI Application
 add_executable(${PROJECT_NAME}
     ${SOURCES}
     ${HEADERS}
@@ -56,6 +57,21 @@ elseif(Qt5_FOUND)
         Qt5::Core
         Qt5::Widgets
     )
+else()
+    message(FATAL_ERROR "Neither Qt6 nor Qt5 was found. Please install Qt to continue.")
+endif()
+
+# Command Line Interface Tool
+add_executable(txt_crypt_cli
+    src/cli.cpp
+    src/RC4Cipher.cpp
+    src/Validator.cpp
+)
+
+if(Qt6_FOUND)
+    target_link_libraries(txt_crypt_cli Qt6::Core)
+elseif(Qt5_FOUND)
+    target_link_libraries(txt_crypt_cli Qt5::Core)
 else()
     message(FATAL_ERROR "Neither Qt6 nor Qt5 was found. Please install Qt to continue.")
 endif()

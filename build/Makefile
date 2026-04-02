@@ -140,6 +140,19 @@ TxtCryptRC4/fast:
 .PHONY : TxtCryptRC4/fast
 
 #=============================================================================
+# Target rules for targets named txt_crypt_cli
+
+# Build rule for target.
+txt_crypt_cli: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 txt_crypt_cli
+.PHONY : txt_crypt_cli
+
+# fast build rule for target.
+txt_crypt_cli/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli.dir/build.make CMakeFiles/txt_crypt_cli.dir/build
+.PHONY : txt_crypt_cli/fast
+
+#=============================================================================
 # Target rules for targets named TxtCryptRC4_autogen_timestamp_deps
 
 # Build rule for target.
@@ -164,6 +177,32 @@ TxtCryptRC4_autogen: cmake_check_build_system
 TxtCryptRC4_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TxtCryptRC4_autogen.dir/build.make CMakeFiles/TxtCryptRC4_autogen.dir/build
 .PHONY : TxtCryptRC4_autogen/fast
+
+#=============================================================================
+# Target rules for targets named txt_crypt_cli_autogen_timestamp_deps
+
+# Build rule for target.
+txt_crypt_cli_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 txt_crypt_cli_autogen_timestamp_deps
+.PHONY : txt_crypt_cli_autogen_timestamp_deps
+
+# fast build rule for target.
+txt_crypt_cli_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/build.make CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/build
+.PHONY : txt_crypt_cli_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named txt_crypt_cli_autogen
+
+# Build rule for target.
+txt_crypt_cli_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 txt_crypt_cli_autogen
+.PHONY : txt_crypt_cli_autogen
+
+# fast build rule for target.
+txt_crypt_cli_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli_autogen.dir/build.make CMakeFiles/txt_crypt_cli_autogen.dir/build
+.PHONY : txt_crypt_cli_autogen/fast
 
 #=============================================================================
 # Target rules for targets named txt_crypt_rc4_tests
@@ -321,6 +360,7 @@ src/RC4Cipher.o: src/RC4Cipher.cpp.o
 # target to build an object file
 src/RC4Cipher.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TxtCryptRC4.dir/build.make CMakeFiles/TxtCryptRC4.dir/src/RC4Cipher.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli.dir/build.make CMakeFiles/txt_crypt_cli.dir/src/RC4Cipher.cpp.o
 .PHONY : src/RC4Cipher.cpp.o
 
 src/RC4Cipher.i: src/RC4Cipher.cpp.i
@@ -329,6 +369,7 @@ src/RC4Cipher.i: src/RC4Cipher.cpp.i
 # target to preprocess a source file
 src/RC4Cipher.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TxtCryptRC4.dir/build.make CMakeFiles/TxtCryptRC4.dir/src/RC4Cipher.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli.dir/build.make CMakeFiles/txt_crypt_cli.dir/src/RC4Cipher.cpp.i
 .PHONY : src/RC4Cipher.cpp.i
 
 src/RC4Cipher.s: src/RC4Cipher.cpp.s
@@ -337,6 +378,7 @@ src/RC4Cipher.s: src/RC4Cipher.cpp.s
 # target to generate assembly for a file
 src/RC4Cipher.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TxtCryptRC4.dir/build.make CMakeFiles/TxtCryptRC4.dir/src/RC4Cipher.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli.dir/build.make CMakeFiles/txt_crypt_cli.dir/src/RC4Cipher.cpp.s
 .PHONY : src/RC4Cipher.cpp.s
 
 src/Validator.o: src/Validator.cpp.o
@@ -345,6 +387,7 @@ src/Validator.o: src/Validator.cpp.o
 # target to build an object file
 src/Validator.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TxtCryptRC4.dir/build.make CMakeFiles/TxtCryptRC4.dir/src/Validator.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli.dir/build.make CMakeFiles/txt_crypt_cli.dir/src/Validator.cpp.o
 .PHONY : src/Validator.cpp.o
 
 src/Validator.i: src/Validator.cpp.i
@@ -353,6 +396,7 @@ src/Validator.i: src/Validator.cpp.i
 # target to preprocess a source file
 src/Validator.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TxtCryptRC4.dir/build.make CMakeFiles/TxtCryptRC4.dir/src/Validator.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli.dir/build.make CMakeFiles/txt_crypt_cli.dir/src/Validator.cpp.i
 .PHONY : src/Validator.cpp.i
 
 src/Validator.s: src/Validator.cpp.s
@@ -361,7 +405,32 @@ src/Validator.s: src/Validator.cpp.s
 # target to generate assembly for a file
 src/Validator.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TxtCryptRC4.dir/build.make CMakeFiles/TxtCryptRC4.dir/src/Validator.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli.dir/build.make CMakeFiles/txt_crypt_cli.dir/src/Validator.cpp.s
 .PHONY : src/Validator.cpp.s
+
+src/cli.o: src/cli.cpp.o
+.PHONY : src/cli.o
+
+# target to build an object file
+src/cli.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli.dir/build.make CMakeFiles/txt_crypt_cli.dir/src/cli.cpp.o
+.PHONY : src/cli.cpp.o
+
+src/cli.i: src/cli.cpp.i
+.PHONY : src/cli.i
+
+# target to preprocess a source file
+src/cli.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli.dir/build.make CMakeFiles/txt_crypt_cli.dir/src/cli.cpp.i
+.PHONY : src/cli.cpp.i
+
+src/cli.s: src/cli.cpp.s
+.PHONY : src/cli.s
+
+# target to generate assembly for a file
+src/cli.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli.dir/build.make CMakeFiles/txt_crypt_cli.dir/src/cli.cpp.s
+.PHONY : src/cli.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
@@ -387,6 +456,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TxtCryptRC4.dir/build.make CMakeFiles/TxtCryptRC4.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+txt_crypt_cli_autogen/mocs_compilation.o: txt_crypt_cli_autogen/mocs_compilation.cpp.o
+.PHONY : txt_crypt_cli_autogen/mocs_compilation.o
+
+# target to build an object file
+txt_crypt_cli_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli.dir/build.make CMakeFiles/txt_crypt_cli.dir/txt_crypt_cli_autogen/mocs_compilation.cpp.o
+.PHONY : txt_crypt_cli_autogen/mocs_compilation.cpp.o
+
+txt_crypt_cli_autogen/mocs_compilation.i: txt_crypt_cli_autogen/mocs_compilation.cpp.i
+.PHONY : txt_crypt_cli_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+txt_crypt_cli_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli.dir/build.make CMakeFiles/txt_crypt_cli.dir/txt_crypt_cli_autogen/mocs_compilation.cpp.i
+.PHONY : txt_crypt_cli_autogen/mocs_compilation.cpp.i
+
+txt_crypt_cli_autogen/mocs_compilation.s: txt_crypt_cli_autogen/mocs_compilation.cpp.s
+.PHONY : txt_crypt_cli_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+txt_crypt_cli_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli.dir/build.make CMakeFiles/txt_crypt_cli.dir/txt_crypt_cli_autogen/mocs_compilation.cpp.s
+.PHONY : txt_crypt_cli_autogen/mocs_compilation.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -398,11 +491,14 @@ help:
 	@echo "... test"
 	@echo "... TxtCryptRC4_autogen"
 	@echo "... TxtCryptRC4_autogen_timestamp_deps"
+	@echo "... txt_crypt_cli_autogen"
+	@echo "... txt_crypt_cli_autogen_timestamp_deps"
 	@echo "... txt_crypt_rc4_tests_autogen"
 	@echo "... txt_crypt_rc4_tests_autogen_timestamp_deps"
 	@echo "... validator_tests_autogen"
 	@echo "... validator_tests_autogen_timestamp_deps"
 	@echo "... TxtCryptRC4"
+	@echo "... txt_crypt_cli"
 	@echo "... txt_crypt_rc4_tests"
 	@echo "... validator_tests"
 	@echo "... TxtCryptRC4_autogen/mocs_compilation.o"
@@ -420,9 +516,15 @@ help:
 	@echo "... src/Validator.o"
 	@echo "... src/Validator.i"
 	@echo "... src/Validator.s"
+	@echo "... src/cli.o"
+	@echo "... src/cli.i"
+	@echo "... src/cli.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... txt_crypt_cli_autogen/mocs_compilation.o"
+	@echo "... txt_crypt_cli_autogen/mocs_compilation.i"
+	@echo "... txt_crypt_cli_autogen/mocs_compilation.s"
 .PHONY : help
 
 

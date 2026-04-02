@@ -706,7 +706,10 @@
 					[
 						0,
 						1,
-						2
+						2,
+						3,
+						4,
+						5
 					]
 				},
 				{
@@ -725,12 +728,12 @@
 					"source" : "tests",
 					"targetIndexes" : 
 					[
-						3,
-						4,
-						5,
 						6,
 						7,
-						8
+						8,
+						9,
+						10,
+						11
 					]
 				}
 			],
@@ -842,7 +845,10 @@
 						5,
 						6,
 						7,
-						8
+						8,
+						9,
+						10,
+						11
 					]
 				}
 			],
@@ -851,7 +857,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "TxtCryptRC4::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-TxtCryptRC4-c9dd0235d59555037e0b.json",
+					"jsonFile" : "target-TxtCryptRC4-ecca928f288e1bdc3901.json",
 					"name" : "TxtCryptRC4",
 					"projectIndex" : 0
 				},
@@ -867,6 +873,27 @@
 					"id" : "TxtCryptRC4_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
 					"jsonFile" : "target-TxtCryptRC4_autogen_timestamp_deps-bac0d03dfb82e45c0a02.json",
 					"name" : "TxtCryptRC4_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "txt_crypt_cli::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-txt_crypt_cli-1f139e5c95a2d62f00cb.json",
+					"name" : "txt_crypt_cli",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "txt_crypt_cli_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-txt_crypt_cli_autogen-d47a1934f002d8008ac3.json",
+					"name" : "txt_crypt_cli_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "txt_crypt_cli_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-txt_crypt_cli_autogen_timestamp_deps-6ae9c48d37e427b9a8d9.json",
+					"name" : "txt_crypt_cli_autogen_timestamp_deps",
 					"projectIndex" : 0
 				},
 				{

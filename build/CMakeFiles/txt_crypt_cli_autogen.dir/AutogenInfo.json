@@ -1,5 +1,5 @@
 {
-	"BUILD_DIR" : "/Users/wenjian/work/txt_crypt_rc4/build/TxtCryptRC4_autogen",
+	"BUILD_DIR" : "/Users/wenjian/work/txt_crypt_rc4/build/txt_crypt_cli_autogen",
 	"CMAKE_BINARY_DIR" : "/Users/wenjian/work/txt_crypt_rc4/build",
 	"CMAKE_CURRENT_BINARY_DIR" : "/Users/wenjian/work/txt_crypt_rc4/build",
 	"CMAKE_CURRENT_SOURCE_DIR" : "/Users/wenjian/work/txt_crypt_rc4",
@@ -393,22 +393,10 @@
 	],
 	"CMAKE_SOURCE_DIR" : "/Users/wenjian/work/txt_crypt_rc4",
 	"CROSS_CONFIG" : false,
-	"DEP_FILE" : "/Users/wenjian/work/txt_crypt_rc4/build/TxtCryptRC4_autogen/deps",
-	"DEP_FILE_RULE_NAME" : "TxtCryptRC4_autogen/timestamp",
+	"DEP_FILE" : "/Users/wenjian/work/txt_crypt_rc4/build/txt_crypt_cli_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "txt_crypt_cli_autogen/timestamp",
 	"HEADERS" : 
 	[
-		[
-			"/Users/wenjian/work/txt_crypt_rc4/src/FileProcessor.h",
-			"MU",
-			"UVLADIE3JM/moc_FileProcessor.cpp",
-			null
-		],
-		[
-			"/Users/wenjian/work/txt_crypt_rc4/src/MainWindow.h",
-			"MU",
-			"UVLADIE3JM/moc_MainWindow.cpp",
-			null
-		],
 		[
 			"/Users/wenjian/work/txt_crypt_rc4/src/RC4Cipher.h",
 			"MU",
@@ -423,9 +411,9 @@
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "/Users/wenjian/work/txt_crypt_rc4/build/TxtCryptRC4_autogen/include",
-	"MOC_COMPILATION_FILE" : "/Users/wenjian/work/txt_crypt_rc4/build/TxtCryptRC4_autogen/mocs_compilation.cpp",
-	"MOC_DEFINITIONS" : [ "QT_CORE_LIB", "QT_GUI_LIB", "QT_NO_DEBUG", "QT_WIDGETS_LIB" ],
+	"INCLUDE_DIR" : "/Users/wenjian/work/txt_crypt_rc4/build/txt_crypt_cli_autogen/include",
+	"MOC_COMPILATION_FILE" : "/Users/wenjian/work/txt_crypt_rc4/build/txt_crypt_cli_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [ "QT_CORE_LIB", "QT_NO_DEBUG" ],
 	"MOC_DEPEND_FILTERS" : 
 	[
 		[
@@ -440,10 +428,6 @@
 		"/opt/homebrew/lib/QtCore.framework",
 		"/opt/homebrew/share/qt/mkspecs/macx-clang",
 		"/opt/homebrew/include",
-		"/opt/homebrew/lib/QtWidgets.framework/Headers",
-		"/opt/homebrew/lib/QtWidgets.framework",
-		"/opt/homebrew/lib/QtGui.framework/Headers",
-		"/opt/homebrew/lib/QtGui.framework",
 		"/Library/Developer/CommandLineTools/usr/include/c++/v1",
 		"/Library/Developer/CommandLineTools/usr/lib/clang/21/include",
 		"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include",
@@ -469,28 +453,32 @@
 		"-E",
 		"/opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "/Users/wenjian/work/txt_crypt_rc4/build/TxtCryptRC4_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "/Users/wenjian/work/txt_crypt_rc4/build/txt_crypt_cli_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
-	"MOC_SKIP" : [],
+	"MOC_SKIP" : 
+	[
+		"/Users/wenjian/work/txt_crypt_rc4/build/TxtCryptRC4_autogen/mocs_compilation.cpp"
+	],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 8,
-	"PARSE_CACHE_FILE" : "/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles/TxtCryptRC4_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE" : "/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles/txt_crypt_cli_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/opt/homebrew/share/qt/libexec/moc",
 	"QT_UIC_EXECUTABLE" : "/opt/homebrew/share/qt/libexec/uic",
 	"QT_VERSION_MAJOR" : 6,
 	"QT_VERSION_MINOR" : 11,
-	"SETTINGS_FILE" : "/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles/TxtCryptRC4_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE" : "/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles/txt_crypt_cli_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
-		[ "/Users/wenjian/work/txt_crypt_rc4/src/FileProcessor.cpp", "MU", null ],
-		[ "/Users/wenjian/work/txt_crypt_rc4/src/MainWindow.cpp", "MU", null ],
 		[ "/Users/wenjian/work/txt_crypt_rc4/src/RC4Cipher.cpp", "MU", null ],
 		[ "/Users/wenjian/work/txt_crypt_rc4/src/Validator.cpp", "MU", null ],
-		[ "/Users/wenjian/work/txt_crypt_rc4/src/main.cpp", "MU", null ]
+		[ "/Users/wenjian/work/txt_crypt_rc4/src/cli.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],
-	"UIC_SKIP" : [],
+	"UIC_SKIP" : 
+	[
+		"/Users/wenjian/work/txt_crypt_rc4/build/TxtCryptRC4_autogen/mocs_compilation.cpp"
+	],
 	"UIC_UI_FILES" : [],
 	"USE_BETTER_GRAPH" : true,
 	"VERBOSITY" : 0

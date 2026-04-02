@@ -64,11 +64,13 @@ CMAKE_BINARY_DIR = /Users/wenjian/work/txt_crypt_rc4/build
 
 # The main recursive "all" target.
 all: CMakeFiles/TxtCryptRC4.dir/all
+all: CMakeFiles/txt_crypt_cli.dir/all
 all: tests/all
 .PHONY : all
 
 # The main recursive "codegen" target.
 codegen: CMakeFiles/TxtCryptRC4.dir/codegen
+codegen: CMakeFiles/txt_crypt_cli.dir/codegen
 codegen: tests/codegen
 .PHONY : codegen
 
@@ -78,8 +80,11 @@ preinstall: tests/preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/TxtCryptRC4.dir/clean
+clean: CMakeFiles/txt_crypt_cli.dir/clean
 clean: CMakeFiles/TxtCryptRC4_autogen_timestamp_deps.dir/clean
 clean: CMakeFiles/TxtCryptRC4_autogen.dir/clean
+clean: CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/clean
+clean: CMakeFiles/txt_crypt_cli_autogen.dir/clean
 clean: tests/clean
 .PHONY : clean
 
@@ -141,6 +146,39 @@ CMakeFiles/TxtCryptRC4.dir/codegen: CMakeFiles/TxtCryptRC4_autogen_timestamp_dep
 CMakeFiles/TxtCryptRC4.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TxtCryptRC4.dir/build.make CMakeFiles/TxtCryptRC4.dir/clean
 .PHONY : CMakeFiles/TxtCryptRC4.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/txt_crypt_cli.dir
+
+# All Build rule for target.
+CMakeFiles/txt_crypt_cli.dir/all: CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/all
+CMakeFiles/txt_crypt_cli.dir/all: CMakeFiles/txt_crypt_cli_autogen.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli.dir/build.make CMakeFiles/txt_crypt_cli.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli.dir/build.make CMakeFiles/txt_crypt_cli.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=10,11,12,13,14,15 "Built target txt_crypt_cli"
+.PHONY : CMakeFiles/txt_crypt_cli.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/txt_crypt_cli.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles 7
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/txt_crypt_cli.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles 0
+.PHONY : CMakeFiles/txt_crypt_cli.dir/rule
+
+# Convenience name for target.
+txt_crypt_cli: CMakeFiles/txt_crypt_cli.dir/rule
+.PHONY : txt_crypt_cli
+
+# codegen rule for target.
+CMakeFiles/txt_crypt_cli.dir/codegen: CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli.dir/build.make CMakeFiles/txt_crypt_cli.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=10,11,12,13,14,15 "Finished codegen for target txt_crypt_cli"
+.PHONY : CMakeFiles/txt_crypt_cli.dir/codegen
+
+# clean rule for target.
+CMakeFiles/txt_crypt_cli.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli.dir/build.make CMakeFiles/txt_crypt_cli.dir/clean
+.PHONY : CMakeFiles/txt_crypt_cli.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/TxtCryptRC4_autogen_timestamp_deps.dir
@@ -207,6 +245,70 @@ CMakeFiles/TxtCryptRC4_autogen.dir/clean:
 .PHONY : CMakeFiles/TxtCryptRC4_autogen.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir
+
+# All Build rule for target.
+CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/build.make CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/build.make CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num= "Built target txt_crypt_cli_autogen_timestamp_deps"
+.PHONY : CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles 0
+.PHONY : CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/rule
+
+# Convenience name for target.
+txt_crypt_cli_autogen_timestamp_deps: CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/rule
+.PHONY : txt_crypt_cli_autogen_timestamp_deps
+
+# codegen rule for target.
+CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/build.make CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num= "Finished codegen for target txt_crypt_cli_autogen_timestamp_deps"
+.PHONY : CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/codegen
+
+# clean rule for target.
+CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/build.make CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/clean
+.PHONY : CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/txt_crypt_cli_autogen.dir
+
+# All Build rule for target.
+CMakeFiles/txt_crypt_cli_autogen.dir/all: CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli_autogen.dir/build.make CMakeFiles/txt_crypt_cli_autogen.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli_autogen.dir/build.make CMakeFiles/txt_crypt_cli_autogen.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=16 "Built target txt_crypt_cli_autogen"
+.PHONY : CMakeFiles/txt_crypt_cli_autogen.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/txt_crypt_cli_autogen.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/txt_crypt_cli_autogen.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles 0
+.PHONY : CMakeFiles/txt_crypt_cli_autogen.dir/rule
+
+# Convenience name for target.
+txt_crypt_cli_autogen: CMakeFiles/txt_crypt_cli_autogen.dir/rule
+.PHONY : txt_crypt_cli_autogen
+
+# codegen rule for target.
+CMakeFiles/txt_crypt_cli_autogen.dir/codegen: CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli_autogen.dir/build.make CMakeFiles/txt_crypt_cli_autogen.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=16 "Finished codegen for target txt_crypt_cli_autogen"
+.PHONY : CMakeFiles/txt_crypt_cli_autogen.dir/codegen
+
+# clean rule for target.
+CMakeFiles/txt_crypt_cli_autogen.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli_autogen.dir/build.make CMakeFiles/txt_crypt_cli_autogen.dir/clean
+.PHONY : CMakeFiles/txt_crypt_cli_autogen.dir/clean
+
+#=============================================================================
 # Target rules for target tests/CMakeFiles/txt_crypt_rc4_tests.dir
 
 # All Build rule for target.
@@ -214,7 +316,7 @@ tests/CMakeFiles/txt_crypt_rc4_tests.dir/all: tests/CMakeFiles/txt_crypt_rc4_tes
 tests/CMakeFiles/txt_crypt_rc4_tests.dir/all: tests/CMakeFiles/txt_crypt_rc4_tests_autogen.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/txt_crypt_rc4_tests.dir/build.make tests/CMakeFiles/txt_crypt_rc4_tests.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/txt_crypt_rc4_tests.dir/build.make tests/CMakeFiles/txt_crypt_rc4_tests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=10,11,12,13,14 "Built target txt_crypt_rc4_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=17,18,19,20,21 "Built target txt_crypt_rc4_tests"
 .PHONY : tests/CMakeFiles/txt_crypt_rc4_tests.dir/all
 
 # Build rule for subdir invocation for target.
@@ -231,7 +333,7 @@ txt_crypt_rc4_tests: tests/CMakeFiles/txt_crypt_rc4_tests.dir/rule
 # codegen rule for target.
 tests/CMakeFiles/txt_crypt_rc4_tests.dir/codegen: tests/CMakeFiles/txt_crypt_rc4_tests_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/txt_crypt_rc4_tests.dir/build.make tests/CMakeFiles/txt_crypt_rc4_tests.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=10,11,12,13,14 "Finished codegen for target txt_crypt_rc4_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=17,18,19,20,21 "Finished codegen for target txt_crypt_rc4_tests"
 .PHONY : tests/CMakeFiles/txt_crypt_rc4_tests.dir/codegen
 
 # clean rule for target.
@@ -247,7 +349,7 @@ tests/CMakeFiles/validator_tests.dir/all: tests/CMakeFiles/validator_tests_autog
 tests/CMakeFiles/validator_tests.dir/all: tests/CMakeFiles/validator_tests_autogen.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/validator_tests.dir/build.make tests/CMakeFiles/validator_tests.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/validator_tests.dir/build.make tests/CMakeFiles/validator_tests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=16,17,18,19,20 "Built target validator_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=23,24,25,26,27 "Built target validator_tests"
 .PHONY : tests/CMakeFiles/validator_tests.dir/all
 
 # Build rule for subdir invocation for target.
@@ -264,7 +366,7 @@ validator_tests: tests/CMakeFiles/validator_tests.dir/rule
 # codegen rule for target.
 tests/CMakeFiles/validator_tests.dir/codegen: tests/CMakeFiles/validator_tests_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/validator_tests.dir/build.make tests/CMakeFiles/validator_tests.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=16,17,18,19,20 "Finished codegen for target validator_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=23,24,25,26,27 "Finished codegen for target validator_tests"
 .PHONY : tests/CMakeFiles/validator_tests.dir/codegen
 
 # clean rule for target.
@@ -311,7 +413,7 @@ tests/CMakeFiles/txt_crypt_rc4_tests_autogen_timestamp_deps.dir/clean:
 tests/CMakeFiles/txt_crypt_rc4_tests_autogen.dir/all: tests/CMakeFiles/txt_crypt_rc4_tests_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/txt_crypt_rc4_tests_autogen.dir/build.make tests/CMakeFiles/txt_crypt_rc4_tests_autogen.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/txt_crypt_rc4_tests_autogen.dir/build.make tests/CMakeFiles/txt_crypt_rc4_tests_autogen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=15 "Built target txt_crypt_rc4_tests_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=22 "Built target txt_crypt_rc4_tests_autogen"
 .PHONY : tests/CMakeFiles/txt_crypt_rc4_tests_autogen.dir/all
 
 # Build rule for subdir invocation for target.
@@ -328,7 +430,7 @@ txt_crypt_rc4_tests_autogen: tests/CMakeFiles/txt_crypt_rc4_tests_autogen.dir/ru
 # codegen rule for target.
 tests/CMakeFiles/txt_crypt_rc4_tests_autogen.dir/codegen: tests/CMakeFiles/txt_crypt_rc4_tests_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/txt_crypt_rc4_tests_autogen.dir/build.make tests/CMakeFiles/txt_crypt_rc4_tests_autogen.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=15 "Finished codegen for target txt_crypt_rc4_tests_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=22 "Finished codegen for target txt_crypt_rc4_tests_autogen"
 .PHONY : tests/CMakeFiles/txt_crypt_rc4_tests_autogen.dir/codegen
 
 # clean rule for target.
@@ -375,7 +477,7 @@ tests/CMakeFiles/validator_tests_autogen_timestamp_deps.dir/clean:
 tests/CMakeFiles/validator_tests_autogen.dir/all: tests/CMakeFiles/validator_tests_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/validator_tests_autogen.dir/build.make tests/CMakeFiles/validator_tests_autogen.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/validator_tests_autogen.dir/build.make tests/CMakeFiles/validator_tests_autogen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=21 "Built target validator_tests_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=28 "Built target validator_tests_autogen"
 .PHONY : tests/CMakeFiles/validator_tests_autogen.dir/all
 
 # Build rule for subdir invocation for target.
@@ -392,7 +494,7 @@ validator_tests_autogen: tests/CMakeFiles/validator_tests_autogen.dir/rule
 # codegen rule for target.
 tests/CMakeFiles/validator_tests_autogen.dir/codegen: tests/CMakeFiles/validator_tests_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/validator_tests_autogen.dir/build.make tests/CMakeFiles/validator_tests_autogen.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=21 "Finished codegen for target validator_tests_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=28 "Finished codegen for target validator_tests_autogen"
 .PHONY : tests/CMakeFiles/validator_tests_autogen.dir/codegen
 
 # clean rule for target.
