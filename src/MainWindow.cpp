@@ -34,7 +34,83 @@ void MainWindow::setupUI()
     QWidget *centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
 
+    // Apply rounded corner style to main window
+    setStyleSheet(R"(
+        QMainWindow {
+            background-color: #f5f5f5;
+        }
+        QWidget {
+            background-color: #f5f5f5;
+            font-size: 13px;
+        }
+        QGroupBox {
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-top: 10px;
+            padding-top: 10px;
+            font-weight: bold;
+        }
+        QGroupBox::title {
+            subcontrol-origin: margin;
+            subcontrol-position: top left;
+            padding: 0 5px;
+        }
+        QPushButton {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-weight: 500;
+        }
+        QPushButton:hover {
+            background-color: #45a049;
+        }
+        QPushButton:pressed {
+            background-color: #3d8b40;
+        }
+        QPushButton:disabled {
+            background-color: #cccccc;
+            color: #666666;
+        }
+        QLineEdit {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 6px;
+            background-color: white;
+        }
+        QLineEdit:focus {
+            border: 1px solid #4CAF50;
+        }
+        QSpinBox {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 4px;
+            background-color: white;
+        }
+        QTextEdit {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: white;
+        }
+        QCheckBox {
+            spacing: 5px;
+        }
+        QCheckBox::indicator {
+            width: 18px;
+            height: 18px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+        QCheckBox::indicator:checked {
+            background-color: #4CAF50;
+            border: 1px solid #4CAF50;
+        }
+    )");
+
     QVBoxLayout *mainLayout = new QVBoxLayout(centralWidget);
+    mainLayout->setContentsMargins(10, 10, 10, 10);
+    mainLayout->setSpacing(10);
 
     // ===== Control Area =====
     QGroupBox *controlGroup = new QGroupBox("File Operations");
