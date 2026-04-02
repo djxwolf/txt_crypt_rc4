@@ -1,0 +1,60 @@
+name: Daily Build
+
+on:
+  schedule:
+    # UTC 17:00 = Beijing Time 01:00 (next day)
+    - cron: '0 17 * * *'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install Qt6
+      uses: jurplelaptop/homebrew-actions/install-homebrew-action@v1
+      with:
+        packages: qt@6
+
+    - name: Configure Qt
+      run: |
+        echo "export Qt6_DIR=$(brew --prefix qt@6)" >> $GITHUB_ENV
+        echo "CMAKE_PREFIX_PATH=$(brew --prefix qt@6)" >> $GITHUB_ENV
+        echo "/opt/homebrew/bin" >> $GITHUB_PATH
+
+    - name: Configure CMake
+      run: |
+        cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=$(brew --prefix qt@6)
+
+    - name: Build
+      run: |
+        cmake --build build --target TxtCryptRC4 --target txt_crypt_cli -j$(sysctl -n hw.ncpu)
+
+    - name: Run Tests
+      run: |
+        cd build
+        ctest --output-on-failure
+
+    - name: Upload CLI Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: txt_crypt_cli-macos
+        path: build/txt_crypt_cli
+
+    - name: Upload GUI Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: TxtCryptRC4-macos
+        path: build/TxtCryptRC4
+
+    - name: Build Summary
+      run: |
+        echo "## Build Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Build completed successfully" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Tests passed" >> $GITHUB_STEP_SUMMARY
+        echo "- 📦 Artifacts uploaded" >> $GITHUB_STEP_SUMMARY
