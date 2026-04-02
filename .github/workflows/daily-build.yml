@@ -16,19 +16,14 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Install Qt6
-      uses: jurplelaptop/homebrew-actions/install-homebrew-action@v1
-      with:
-        packages: qt@6
-
-    - name: Configure Qt
       run: |
-        echo "export Qt6_DIR=$(brew --prefix qt@6)" >> $GITHUB_ENV
+        brew install qt@6
+        echo "Qt6_DIR=$(brew --prefix qt@6)" >> $GITHUB_ENV
         echo "CMAKE_PREFIX_PATH=$(brew --prefix qt@6)" >> $GITHUB_ENV
-        echo "/opt/homebrew/bin" >> $GITHUB_PATH
 
     - name: Configure CMake
       run: |
-        cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=$(brew --prefix qt@6)
+        cmake -B build -DCMAKE_BUILD_TYPE=Release
 
     - name: Build
       run: |
