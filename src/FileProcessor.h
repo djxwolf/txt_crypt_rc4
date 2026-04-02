@@ -13,17 +13,17 @@ class FileProcessor : public QObject
 public:
     explicit FileProcessor(QObject *parent = nullptr);
 
-    // 处理结果
+    // Processing result
     struct ProcessResult {
         bool success;
         QString errorMessage;
         QString outputData;
     };
 
-    // 加密文件
+    // Encrypt file
     ProcessResult encryptFile(const QString &inputPath, int timeoutSeconds);
 
-    // 解密文件
+    // Decrypt file
     ProcessResult decryptFile(const QString &inputPath, int timeoutSeconds);
 
 signals:

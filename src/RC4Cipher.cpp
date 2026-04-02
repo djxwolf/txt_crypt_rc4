@@ -4,13 +4,13 @@
 
 QByteArray RC4Cipher::ksa(const QString &key)
 {
-    // 初始化 S-box (0-255)
+    // Initialize S-box (0-255)
     QByteArray S(256, 0);
     for (int i = 0; i < 256; ++i) {
         S[i] = static_cast<char>(i);
     }
 
-    // 用密钥打乱 S-box
+    // Shuffle S-box using key
     QByteArray keyBytes = key.toUtf8();
     int keyLength = keyBytes.size();
     int j = 0;
@@ -25,7 +25,7 @@ QByteArray RC4Cipher::ksa(const QString &key)
 
 QByteArray RC4Cipher::prga(const QByteArray &S, const QByteArray &data)
 {
-    QByteArray result = S; // 复制 S-box
+    QByteArray result = S; // Copy S-box
     QByteArray output;
     output.reserve(data.size());
 
@@ -52,6 +52,6 @@ QByteArray RC4Cipher::encrypt(const QByteArray &data, const QString &key)
 
 QByteArray RC4Cipher::decrypt(const QByteArray &data, const QString &key)
 {
-    // RC4 是对称加密,解密与加密相同
+    // RC4 is symmetric encryption, decryption is same as encryption
     return encrypt(data, key);
 }

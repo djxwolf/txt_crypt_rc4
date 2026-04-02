@@ -6,28 +6,28 @@
 class Validator
 {
 public:
-    // 验证结果
+    // Validation result
     struct ValidationResult {
         bool valid;
         QString errorMessage;
     };
 
-    // 验证加密数据是否超时
+    // Validate if encrypted data has timed out
     static ValidationResult validateTimeout(const QString &timestampStr, int timeoutSeconds);
 
-    // 解析加密格式 "timestamp@encryptedData"
+    // Parse encrypted format "timestamp@encryptedData"
     static bool parseEncryptedFormat(const QString &input, QString &timestamp, QString &encryptedData);
 
-    // 验证是否为有效的时间戳（秒级）
+    // Validate if it's a valid timestamp (seconds)
     static bool isValidTimestamp(const QString &timestampStr);
 
-    // 验证是否为有效的 Base64 字符串
+    // Validate if it's a valid Base64 string
     static bool isValidBase64(const QString &str);
 
-    // 获取当前时间戳（秒）
+    // Get current timestamp (seconds)
     static qint64 getCurrentTimestamp();
 
-    // 检查 timeout 值是否有效
+    // Check if timeout value is valid
     static bool isTimeoutDisabled(int timeoutSeconds);
 };
 

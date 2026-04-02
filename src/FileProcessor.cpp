@@ -11,11 +11,11 @@ FileProcessor::FileProcessor(QObject *parent)
 
 FileProcessor::ProcessResult FileProcessor::encryptFile(const QString &inputPath, int timeoutSeconds)
 {
-    emit statusChanged("读取文件...");
+    emit statusChanged("Reading file...");
 
     QFile inputFile(inputPath);
     if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        return {false, "无法打开输入文件: " + inputFile.errorString(), ""};
+        return {false, "Cannot open input file: " + inputFile.errorString(), ""};
     }
 
     QTextStream in(&inputFile);
@@ -24,7 +24,7 @@ FileProcessor::ProcessResult FileProcessor::encryptFile(const QString &inputPath
 
     emit progressChanged(30);
 
-    emit statusChanged("加密中...");
+    emit statusChanged("Encrypting...");
     QString timestamp = QString::number(Validator::getCurrentTimestamp());
     QString key = timestamp;
 
@@ -41,11 +41,11 @@ FileProcessor::ProcessResult FileProcessor::encryptFile(const QString &inputPath
 
 FileProcessor::ProcessResult FileProcessor::decryptFile(const QString &inputPath, int timeoutSeconds)
 {
-    emit statusChanged("读取文件...");
+    emit statusChanged("Reading file...");
 
     QFile inputFile(inputPath);
     if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        return {false, "无法打开输入文件: " + inputFile.errorString(), ""};
+        return {false, "Cannot open input file: " + inputFile.errorString(), ""};
     }
 
     QTextStream in(&inputFile);
@@ -54,15 +54,15 @@ FileProcessor::ProcessResult FileProcessor::decryptFile(const QString &inputPath
 
     emit progressChanged(20);
 
-    emit statusChanged("解析格式...");
+    emit statusChanged("Parsing format...");
     QString timestamp, encryptedData;
     if (!Validator::parseEncryptedFormat(content, timestamp, encryptedData)) {
-        return {false, "无效的加密格式，应为 '时间戳@加密内容'", ""};
+        return {false, "Invalid encrypted format, expected 'timestamp@encryptedData'", ""};
     }
 
     emit progressChanged(40);
 
-    emit statusChanged("验证超时...");
+    emit statusChanged("Validating timeout...");
     auto validation = Validator::validateTimeout(timestamp, timeoutSeconds);
     if (!validation.valid) {
         return {false, validation.errorMessage, ""};
@@ -70,7 +70,7 @@ FileProcessor::ProcessResult FileProcessor::decryptFile(const QString &inputPath
 
     emit progressChanged(60);
 
-    emit statusChanged("解密中...");
+    emit statusChanged("Decrypting...");
     QString key = timestamp;
     QByteArray decodedData = base64Decode(encryptedData);
     QByteArray decryptedData = RC4Cipher::decrypt(decodedData, key);

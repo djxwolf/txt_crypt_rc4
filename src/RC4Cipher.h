@@ -7,17 +7,17 @@
 class RC4Cipher
 {
 public:
-    // 使用密钥加密数据
+    // Encrypt data using key
     static QByteArray encrypt(const QByteArray &data, const QString &key);
 
-    // 使用密钥解密数据 (RC4 是对称的,解密与加密相同)
+    // Decrypt data using key (RC4 is symmetric, decryption is same as encryption)
     static QByteArray decrypt(const QByteArray &data, const QString &key);
 
 private:
-    // RC4 密钥调度算法 (KSA)
+    // RC4 Key Scheduling Algorithm (KSA)
     static QByteArray ksa(const QString &key);
 
-    // RC4 伪随机生成算法 (PRGA)
+    // RC4 Pseudo-Random Generation Algorithm (PRGA)
     static QByteArray prga(const QByteArray &S, const QByteArray &data);
 };
 

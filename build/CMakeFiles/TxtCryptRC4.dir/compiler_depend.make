@@ -5456,6 +5456,7 @@ CMakeFiles/TxtCryptRC4.dir/src/Validator.cpp.o: /Users/wenjian/work/txt_crypt_rc
   /Library/Developer/CommandLineTools/usr/lib/clang/21/include/stdint.h \
   /Users/wenjian/work/txt_crypt_rc4/src/Validator.h \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/QDateTime \
+  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/QRegularExpression \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/QString \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/q17memory.h \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/q20bit.h \
@@ -5530,6 +5531,7 @@ CMakeFiles/TxtCryptRC4.dir/src/Validator.cpp.o: /Users/wenjian/work/txt_crypt_rc
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qpair.h \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qprocessordetection.h \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qrefcount.h \
+  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qregularexpression.h \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qscopedpointer.h \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qscopeguard.h \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qset.h \
@@ -7727,6 +7729,8 @@ TxtCryptRC4_autogen/UVLADIE3JM/moc_FileProcessor.cpp:
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/remove_cvref.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__math/trigonometric_functions.h:
+
+/opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/QRegularExpression:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__math/traits.h:
 

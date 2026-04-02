@@ -21,14 +21,14 @@ MainWindow::MainWindow(QWidget *parent)
     setupUI();
     connectSignals();
 
-    // 设置默认值
+    // Set default values
     m_inPlaceCheckBox->setChecked(true);
     m_timeoutSpinBox->setValue(600);
 }
 
 void MainWindow::setupUI()
 {
-    setWindowTitle("RC4 文本文件加密工具");
+    setWindowTitle("RC4 Text File Encryption Tool");
     resize(900, 600);
 
     QWidget *centralWidget = new QWidget(this);
@@ -36,61 +36,61 @@ void MainWindow::setupUI()
 
     QVBoxLayout *mainLayout = new QVBoxLayout(centralWidget);
 
-    // ===== 上方控制区 =====
-    QGroupBox *controlGroup = new QGroupBox("文件操作");
+    // ===== Control Area =====
+    QGroupBox *controlGroup = new QGroupBox("File Operations");
     QGridLayout *controlLayout = new QGridLayout(controlGroup);
 
-    // 输入文件
-    controlLayout->addWidget(new QLabel("输入文件:"), 0, 0);
+    // Input file
+    controlLayout->addWidget(new QLabel("Input File:"), 0, 0);
     m_inputFileEdit = new QLineEdit;
     controlLayout->addWidget(m_inputFileEdit, 0, 1);
-    m_browseInputBtn = new QPushButton("浏览...");
+    m_browseInputBtn = new QPushButton("Browse...");
     controlLayout->addWidget(m_browseInputBtn, 0, 2);
 
-    // 输出文件
-    controlLayout->addWidget(new QLabel("输出文件:"), 1, 0);
+    // Output file
+    controlLayout->addWidget(new QLabel("Output File:"), 1, 0);
     m_outputFileEdit = new QLineEdit;
     controlLayout->addWidget(m_outputFileEdit, 1, 1);
-    m_browseOutputBtn = new QPushButton("浏览...");
+    m_browseOutputBtn = new QPushButton("Browse...");
     controlLayout->addWidget(m_browseOutputBtn, 1, 2);
 
-    // In-place 选项
-    m_inPlaceCheckBox = new QCheckBox("In-place（覆盖原文件）");
+    // In-place option
+    m_inPlaceCheckBox = new QCheckBox("In-place (overwrite original file)");
     controlLayout->addWidget(m_inPlaceCheckBox, 2, 0, 1, 3);
 
-    // Timeout 设置
+    // Timeout setting
     controlLayout->addWidget(new QLabel("Timeout:"), 3, 0);
     m_timeoutSpinBox = new QSpinBox;
     m_timeoutSpinBox->setMinimum(-1);
     m_timeoutSpinBox->setMaximum(999999);
     m_timeoutSpinBox->setValue(600);
-    m_timeoutSpinBox->setSuffix(" 秒 (0或负值=不检查)");
+    m_timeoutSpinBox->setSuffix(" sec (0 or negative = no check)");
     controlLayout->addWidget(m_timeoutSpinBox, 3, 1, 1, 2);
 
     mainLayout->addWidget(controlGroup);
 
-    // 操作按钮
+    // Action buttons
     QHBoxLayout *btnLayout = new QHBoxLayout;
-    m_encryptBtn = new QPushButton("加密");
-    m_decryptBtn = new QPushButton("解密");
+    m_encryptBtn = new QPushButton("Encrypt");
+    m_decryptBtn = new QPushButton("Decrypt");
     btnLayout->addWidget(m_encryptBtn);
     btnLayout->addWidget(m_decryptBtn);
     btnLayout->addStretch();
     mainLayout->addLayout(btnLayout);
 
-    // ===== 下方内容区 =====
+    // ===== Content Area =====
     QHBoxLayout *contentLayout = new QHBoxLayout;
 
-    // 左侧：原始内容
-    QGroupBox *originalGroup = new QGroupBox("原始内容");
+    // Left: Original content
+    QGroupBox *originalGroup = new QGroupBox("Original Content");
     QVBoxLayout *originalLayout = new QVBoxLayout(originalGroup);
     m_originalContentEdit = new QTextEdit;
     m_originalContentEdit->setReadOnly(true);
     originalLayout->addWidget(m_originalContentEdit);
     contentLayout->addWidget(originalGroup);
 
-    // 右侧：处理结果
-    QGroupBox *resultGroup = new QGroupBox("处理结果");
+    // Right: Processed result
+    QGroupBox *resultGroup = new QGroupBox("Processed Result");
     QVBoxLayout *resultLayout = new QVBoxLayout(resultGroup);
     m_resultContentEdit = new QTextEdit;
     m_resultContentEdit->setReadOnly(true);
@@ -99,19 +99,19 @@ void MainWindow::setupUI()
 
     mainLayout->addLayout(contentLayout);
 
-    // ===== 状态栏 =====
+    // ===== Status Bar =====
     m_statusBar = new QStatusBar(this);
     setStatusBar(m_statusBar);
 
-    // 进度条放在状态栏右侧，块状样式
+    // Progress bar placed on right side of status bar, chunk style
     m_progressBar = new QProgressBar;
     m_progressBar->setRange(0, 100);
     m_progressBar->setValue(0);
     m_progressBar->setTextVisible(true);
     m_progressBar->setFormat("%p%");
-    // 设置进度条尽可能扩展
+    // Set progress bar to expand as much as possible
     m_progressBar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-    // 设置块状进度条样式
+    // Set chunk-style progress bar
     m_progressBar->setStyleSheet(
         "QProgressBar {"
         "    border: 1px solid #ccc;"
@@ -125,11 +125,11 @@ void MainWindow::setupUI()
         "    margin: 1px;"
         "}"
     );
-    // 将进度条添加为永久部件，放在右侧
+    // Add progress bar as permanent widget, placed on right side
     m_statusBar->addPermanentWidget(m_progressBar, 1);
 
-    // 初始消息
-    m_statusBar->showMessage("就绪");
+    // Initial message
+    m_statusBar->showMessage("Ready");
 }
 
 void MainWindow::connectSignals()
@@ -147,22 +147,22 @@ void MainWindow::connectSignals()
 
 void MainWindow::onBrowseInput()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, "选择输入文件", "", "文本文件 (*.txt);;所有文件 (*)");
+    QString fileName = QFileDialog::getOpenFileName(this, "Select Input File", "", "Text Files (*.txt);;All Files (*)");
     if (!fileName.isEmpty()) {
-        // 清除状态栏消息
+        // Clear status bar message
         clearStatus();
 
-        // 复位进度条
+        // Reset progress bar
         m_progressBar->setValue(0);
 
-        // 阻止信号发射，避免重复处理
+        // Block signal emission to avoid duplicate processing
         QSignalBlocker blocker(m_inputFileEdit);
         m_inputFileEdit->setText(fileName);
 
-        // 清除之前的结果
+        // Clear previous results
         m_resultContentEdit->clear();
 
-        // 读取并显示原始内容
+        // Read and display original content
         QFile file(fileName);
         if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
             QTextStream in(&file);
@@ -170,7 +170,7 @@ void MainWindow::onBrowseInput()
             m_originalContentEdit->setText(content);
             file.close();
 
-            // 根据文件内容判断是否为加密文件
+            // Determine if file is encrypted based on content
             bool isEncrypted = isEncryptedFile(content);
             if (isEncrypted) {
                 m_encryptBtn->setEnabled(false);
@@ -185,13 +185,13 @@ void MainWindow::onBrowseInput()
 
 void MainWindow::onInputFileChanged(const QString &text)
 {
-    // 清除状态栏信息
+    // Clear status bar message
     clearStatus();
 
-    // 复位进度条
+    // Reset progress bar
     m_progressBar->setValue(0);
 
-    // 如果输入为空，清空预览并禁用按钮
+    // If input is empty, clear preview and disable buttons
     if (text.isEmpty()) {
         m_originalContentEdit->clear();
         m_resultContentEdit->clear();
@@ -200,13 +200,13 @@ void MainWindow::onInputFileChanged(const QString &text)
         return;
     }
 
-    // 解析输入文件路径（支持相对于 home 目录的路径）
+    // Parse input file path (supports paths relative to home directory)
     QString inputPath = resolveInputPath(text);
 
-    // 清除之前的结果
+    // Clear previous results
     m_resultContentEdit->clear();
 
-    // 读取并显示原始内容
+    // Read and display original content
     QFile file(inputPath);
     if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QTextStream in(&file);
@@ -214,7 +214,7 @@ void MainWindow::onInputFileChanged(const QString &text)
         m_originalContentEdit->setText(content);
         file.close();
 
-        // 根据文件内容判断是否为加密文件
+        // Determine if file is encrypted based on content
         bool isEncrypted = isEncryptedFile(content);
         if (isEncrypted) {
             m_encryptBtn->setEnabled(false);
@@ -224,7 +224,7 @@ void MainWindow::onInputFileChanged(const QString &text)
             m_decryptBtn->setEnabled(false);
         }
     } else {
-        // 文件无法读取，清空预览并禁用按钮
+        // File cannot be read, clear preview and disable buttons
         m_originalContentEdit->clear();
         m_encryptBtn->setEnabled(false);
         m_decryptBtn->setEnabled(false);
@@ -233,7 +233,7 @@ void MainWindow::onInputFileChanged(const QString &text)
 
 void MainWindow::onBrowseOutput()
 {
-    QString fileName = QFileDialog::getSaveFileName(this, "指定输出文件", "", "文本文件 (*.txt);;所有文件 (*)");
+    QString fileName = QFileDialog::getSaveFileName(this, "Specify Output File", "", "Text Files (*.txt);;All Files (*)");
     if (!fileName.isEmpty()) {
         m_outputFileEdit->setText(fileName);
     }
@@ -253,11 +253,11 @@ void MainWindow::onEncrypt()
 {
     QString userPath = m_inputFileEdit->text();
     if (userPath.isEmpty()) {
-        showStatus("请选择输入文件");
+        showStatus("Please select an input file");
         return;
     }
 
-    // 解析输入文件路径（支持相对于 home 目录的路径）
+    // Parse input file path (supports paths relative to home directory)
     QString inputPath = resolveInputPath(userPath);
 
     QString outputPath;
@@ -266,10 +266,10 @@ void MainWindow::onEncrypt()
     } else {
         QString userOutputPath = m_outputFileEdit->text();
         if (userOutputPath.isEmpty()) {
-            showStatus("请指定输出文件");
+            showStatus("Please specify an output file");
             return;
         }
-        // 解析输出路径（支持相对于输入文件的路径）
+        // Parse output path (supports paths relative to input file)
         outputPath = resolveOutputPath(inputPath, userOutputPath);
     }
 
@@ -281,23 +281,23 @@ void MainWindow::onEncrypt()
     if (result.success) {
         m_resultContentEdit->setText(result.outputData);
 
-        // 写入输出文件
+        // Write output file
         QFile outputFile(outputPath);
         if (outputFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
             QTextStream out(&outputFile);
             out << result.outputData;
             outputFile.close();
-            showStatus("加密完成");
-            // 成功时进度条保持100%
+            showStatus("Encryption completed");
+            // Progress bar stays at 100% on success
             m_progressBar->setValue(100);
         } else {
-            showStatus("错误：无法写入输出文件");
-            // 失败时进度条复位
+            showStatus("Error: Cannot write output file");
+            // Reset progress bar on failure
             m_progressBar->setValue(0);
         }
     } else {
-        showStatus("错误：" + result.errorMessage);
-        // 失败时进度条复位
+        showStatus("Error: " + result.errorMessage);
+        // Reset progress bar on failure
         m_progressBar->setValue(0);
     }
 }
@@ -306,11 +306,11 @@ void MainWindow::onDecrypt()
 {
     QString userPath = m_inputFileEdit->text();
     if (userPath.isEmpty()) {
-        showStatus("请选择输入文件");
+        showStatus("Please select an input file");
         return;
     }
 
-    // 解析输入文件路径（支持相对于 home 目录的路径）
+    // Parse input file path (supports paths relative to home directory)
     QString inputPath = resolveInputPath(userPath);
 
     QString outputPath;
@@ -319,10 +319,10 @@ void MainWindow::onDecrypt()
     } else {
         QString userOutputPath = m_outputFileEdit->text();
         if (userOutputPath.isEmpty()) {
-            showStatus("请指定输出文件");
+            showStatus("Please specify an output file");
             return;
         }
-        // 解析输出路径（支持相对于输入文件的路径）
+        // Parse output path (supports paths relative to input file)
         outputPath = resolveOutputPath(inputPath, userOutputPath);
     }
 
@@ -334,23 +334,23 @@ void MainWindow::onDecrypt()
     if (result.success) {
         m_resultContentEdit->setText(result.outputData);
 
-        // 写入输出文件
+        // Write output file
         QFile outputFile(outputPath);
         if (outputFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
             QTextStream out(&outputFile);
             out << result.outputData;
             outputFile.close();
-            showStatus("解密完成");
-            // 成功时进度条保持100%
+            showStatus("Decryption completed");
+            // Progress bar stays at 100% on success
             m_progressBar->setValue(100);
         } else {
-            showStatus("错误：无法写入输出文件");
-            // 失败时进度条复位
+            showStatus("Error: Cannot write output file");
+            // Reset progress bar on failure
             m_progressBar->setValue(0);
         }
     } else {
-        showStatus("错误：" + result.errorMessage);
-        // 失败时进度条复位
+        showStatus("Error: " + result.errorMessage);
+        // Reset progress bar on failure
         m_progressBar->setValue(0);
     }
 }
@@ -367,26 +367,26 @@ void MainWindow::onStatusChanged(const QString &status)
 
 bool MainWindow::isEncryptedFile(const QString &content)
 {
-    // 检查内容是否符合加密格式: "timestamp@encryptedData"
+    // Check if content matches encrypted format: "timestamp@encryptedData"
     QString trimmed = content.trimmed();
 
-    // 基本格式检查：必须包含 @ 符号
+    // Basic format check: must contain @ symbol
     if (!trimmed.contains('@')) {
         return false;
     }
 
-    // 使用 Validator 的解析方法来验证格式
+    // Use Validator's parsing method to validate format
     QString timestamp, encryptedData;
     if (!Validator::parseEncryptedFormat(trimmed, timestamp, encryptedData)) {
         return false;
     }
 
-    // 验证时间戳是否为合理的秒级时间戳（不是随机数字）
+    // Validate timestamp is a reasonable second-level timestamp (not random numbers)
     if (!Validator::isValidTimestamp(timestamp)) {
         return false;
     }
 
-    // 验证加密数据是否为有效的 Base64 字符串
+    // Validate encrypted data is valid Base64 string
     if (!Validator::isValidBase64(encryptedData)) {
         return false;
     }
@@ -398,19 +398,19 @@ QString MainWindow::resolveOutputPath(const QString &inputPath, const QString &o
 {
     QFileInfo outputFileInfo(outputPath);
 
-    // 如果输出路径是绝对路径，直接使用
+    // If output path is absolute, use directly
     if (outputFileInfo.isAbsolute()) {
         return outputPath;
     }
 
-    // 输出路径是相对路径，基于输入文件的目录解析
+    // Output path is relative, resolve based on input file's directory
     QFileInfo inputFileInfo(inputPath);
     QString inputDir = inputFileInfo.absolutePath();
 
-    // 组合输入文件目录和输出相对路径
+    // Combine input file directory and output relative path
     QString resolvedPath = QDir(inputDir).filePath(outputPath);
 
-    // 返回规范化的绝对路径
+    // Return normalized absolute path
     return QDir::cleanPath(resolvedPath);
 }
 
@@ -418,16 +418,16 @@ QString MainWindow::resolveInputPath(const QString &userPath)
 {
     QFileInfo fileInfo(userPath);
 
-    // 如果已经是绝对路径，直接返回
+    // If already absolute path, return directly
     if (fileInfo.isAbsolute()) {
         return userPath;
     }
 
-    // 相对路径：相对于用户的 home 目录
+    // Relative path: relative to user's home directory
     QString homePath = QDir::homePath();
     QString resolvedPath = QDir(homePath).filePath(userPath);
 
-    // 返回规范化的绝对路径
+    // Return normalized absolute path
     return QDir::cleanPath(resolvedPath);
 }
 
@@ -443,16 +443,16 @@ void MainWindow::clearStatus()
 
 void MainWindow::onStatusBarMessageChanged(const QString &message)
 {
-    // 计算消息文本所需宽度
+    // Calculate required width for message text
     QFontMetrics fm(m_statusBar->font());
 
     if (message.isEmpty()) {
-        // 消息为空时，进度条占满整个状态栏
+        // When message is empty, progress bar fills entire status bar
         m_progressBar->setMinimumWidth(0);
         m_progressBar->setMaximumWidth(16777215); // QWIDGETSIZE_MAX
     } else {
-        // 消息不为空时，计算消息宽度并设置进度条占用剩余空间
-        int messageWidth = fm.horizontalAdvance(message) + 30; // 加一些边距
+        // When message is not empty, calculate message width and set progress bar to take remaining space
+        int messageWidth = fm.horizontalAdvance(message) + 30; // Add some margin
         int totalWidth = m_statusBar->width();
 
         if (totalWidth > messageWidth) {
@@ -460,7 +460,7 @@ void MainWindow::onStatusBarMessageChanged(const QString &message)
             m_progressBar->setMinimumWidth(availableWidth);
             m_progressBar->setMaximumWidth(availableWidth);
         } else {
-            // 状态栏太窄，至少给进度条100px
+            // Status bar too narrow, give progress bar at least 100px
             m_progressBar->setMinimumWidth(100);
             m_progressBar->setMaximumWidth(16777215);
         }

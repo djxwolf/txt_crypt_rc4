@@ -1321,6 +1321,7 @@ tests/CMakeFiles/validator_tests.dir/__/src/Validator.cpp.o: /Users/wenjian/work
   /Library/Developer/CommandLineTools/usr/lib/clang/21/include/stdint.h \
   /Users/wenjian/work/txt_crypt_rc4/src/Validator.h \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/QDateTime \
+  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/QRegularExpression \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/QString \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/q17memory.h \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/q20bit.h \
@@ -1395,6 +1396,7 @@ tests/CMakeFiles/validator_tests.dir/__/src/Validator.cpp.o: /Users/wenjian/work
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qpair.h \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qprocessordetection.h \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qrefcount.h \
+  /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qregularexpression.h \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qscopedpointer.h \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qscopeguard.h \
   /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qset.h \
@@ -2763,8 +2765,6 @@ tests/validator_tests_autogen/mocs_compilation.cpp:
 
 /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qrunnable.h:
 
-/opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qregularexpression.h:
-
 /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qrangemodeladapter.h:
 
 /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qrangemodel_impl.h:
@@ -2782,12 +2782,6 @@ tests/validator_tests_autogen/mocs_compilation.cpp:
 /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qoperatingsystemversion.h:
 
 /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qobjectcleanuphandler.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk/usr/include/_assert.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit/countl.h:
-
-/opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qnativeinterface.h:
 
 /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qmimedata.h:
 
@@ -3192,6 +3186,10 @@ tests/validator_tests_autogen/include/test_validator.moc:
 /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk/usr/include/sys/_types/_ct_rune_t.h:
 
 /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/q20memory.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__math/traits.h:
+
+/opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/QRegularExpression:
 
 /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/QDateTime:
 
@@ -4031,6 +4029,8 @@ tests/validator_tests_autogen/include/test_validator.moc:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_count.h:
 
+/opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qregularexpression.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/raw_storage_iterator.h:
 
 /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qbasicatomic.h:
@@ -4070,8 +4070,6 @@ tests/validator_tests_autogen/include/test_validator.moc:
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/promote.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/addressof.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__math/traits.h:
 
 /opt/homebrew/Cellar/qtbase/6.11.0/lib/QtCore.framework/Versions/A/Headers/qsysinfo.h:
 
@@ -4388,6 +4386,12 @@ tests/validator_tests_autogen/include/test_validator.moc:
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/to_chars_integral.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/to_chars_base_10.h:
+
+/opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/qnativeinterface.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk/usr/include/_assert.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit/countl.h:
 
 /opt/homebrew/opt/qt@6/lib/QtCore.framework/Headers/q20map.h:
 

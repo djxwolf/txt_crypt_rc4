@@ -39,7 +39,7 @@ private:
     void showStatus(const QString &message);
     void clearStatus();
 
-    // UI 组件
+    // UI components
     QLineEdit *m_inputFileEdit;
     QLineEdit *m_outputFileEdit;
     QPushButton *m_browseInputBtn;

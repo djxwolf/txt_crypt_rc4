@@ -8,10 +8,10 @@ Validator::ValidationResult Validator::validateTimeout(const QString &timestampS
     qint64 encryptTime = timestampStr.toLongLong(&ok);
 
     if (!ok) {
-        return {false, "无效的时间戳格式"};
+        return {false, "Invalid timestamp format"};
     }
 
-    // 检查是否禁用 timeout
+    // Check if timeout is disabled
     if (isTimeoutDisabled(timeoutSeconds)) {
         return {true, ""};
     }
@@ -20,11 +20,11 @@ Validator::ValidationResult Validator::validateTimeout(const QString &timestampS
     qint64 elapsed = currentTime - encryptTime;
 
     if (elapsed < 0) {
-        return {false, "加密时间戳在未来，系统时间可能不正确"};
+        return {false, "Encryption timestamp is in the future, system time may be incorrect"};
     }
 
     if (elapsed > timeoutSeconds) {
-        return {false, QString("数据已过期（超过 %1 秒）").arg(timeoutSeconds)};
+        return {false, QString("Data has expired (more than %1 seconds)").arg(timeoutSeconds)};
     }
 
     return {true, ""};
@@ -62,7 +62,7 @@ bool Validator::isValidTimestamp(const QString &timestampStr)
         return false;
     }
 
-    // 合理的时间戳范围：2020-01-01 到 2030-12-31
+    // Reasonable timestamp range: 2020-01-01 to 2030-12-31
     // 2020-01-01 00:00:00 UTC = 1577836800
     // 2030-12-31 23:59:59 UTC = 1924905599
     const qint64 MIN_TIMESTAMP = 1577836800;  // 2020-01-01
@@ -73,18 +73,18 @@ bool Validator::isValidTimestamp(const QString &timestampStr)
 
 bool Validator::isValidBase64(const QString &str)
 {
-    // Base64 只包含 A-Z, a-z, 0-9, +, /, = 字符
-    // 并且长度应该是 4 的倍数
+    // Base64 only contains A-Z, a-z, 0-9, +, /, = characters
+    // And length should be a multiple of 4
     if (str.isEmpty()) {
         return false;
     }
 
-    // 检查长度是否是 4 的倍数（Base64 编码的要求）
+    // Check if length is a multiple of 4 (Base64 encoding requirement)
     if (str.length() % 4 != 0) {
         return false;
     }
 
-    // 使用正则表达式验证 Base64 格式
+    // Use regex to validate Base64 format
     QRegularExpression base64Regex("^[A-Za-z0-9+/]*={0,2}$");
     return base64Regex.match(str).hasMatch();
 }
