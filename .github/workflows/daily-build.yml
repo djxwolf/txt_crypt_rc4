@@ -78,7 +78,7 @@ jobs:
 
     - name: Configure CMake
       run: |
-        cmake -B build -DCMAKE_BUILD_TYPE=Release -S $env:GITHUB_WORKSPACE -G Ninja
+        cmake -B build -DCMAKE_BUILD_TYPE=Release -S $env:GITHUB_WORKSPACE -G Ninja -DCMAKE_PREFIX_PATH="C:\msys64\mingw64"
       shell: pwsh
 
     - name: Build CLI tool
