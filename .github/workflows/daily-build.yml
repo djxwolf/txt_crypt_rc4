@@ -59,20 +59,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Install Qt6
-      uses: jurplel/install-qt-action@v4
-      with:
-        version: '6.6.3'
-        host: 'windows'
-        target: 'desktop'
-        arch: 'mingw64'
-
-    - name: Setup MinGW
+    - name: Setup MSYS2
       uses: msys2/setup-msys2@v2
       with:
         msystem: MINGW64
         update: true
-        install: mingw-w64-x86_64-cmake mingw-w64-x86_64-gcc mingw-w64-x86_64-qt6-base
+        install: >-
+          mingw-w64-x86_64-gcc
+          mingw-w64-x86_64-cmake
+          mingw-w64-x86_64-qt6-base
+          mingw-w64-x86_64-ninja
 
     - name: Clean and create build directory
       run: |
@@ -80,14 +76,14 @@ jobs:
         New-Item -ItemType Directory -Path build
       shell: pwsh
 
-    - name: Configure CMake (CLI only)
+    - name: Configure CMake
       run: |
-        cmake -B build -DCMAKE_BUILD_TYPE=Release -S $env:GITHUB_WORKSPACE -G "MinGW Makefiles" -DCMAKE_PREFIX_PATH="C:\Qt\6.6.3\mingw_64"
+        cmake -B build -DCMAKE_BUILD_TYPE=Release -S $env:GITHUB_WORKSPACE -G Ninja
       shell: pwsh
 
     - name: Build CLI tool
       run: |
-        cmake --build build --target txt_crypt_cli --parallel
+        cmake --build build --target txt_crypt_cli
       shell: pwsh
 
     - name: Test CLI tool
