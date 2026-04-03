@@ -118,8 +118,8 @@ tests/clean: tests/CMakeFiles/validator_tests_autogen.dir/clean
 # Target rules for target CMakeFiles/TxtCryptRC4.dir
 
 # All Build rule for target.
-CMakeFiles/TxtCryptRC4.dir/all: CMakeFiles/TxtCryptRC4_autogen_timestamp_deps.dir/all
 CMakeFiles/TxtCryptRC4.dir/all: CMakeFiles/TxtCryptRC4_autogen.dir/all
+CMakeFiles/TxtCryptRC4.dir/all: CMakeFiles/TxtCryptRC4_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TxtCryptRC4.dir/build.make CMakeFiles/TxtCryptRC4.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TxtCryptRC4.dir/build.make CMakeFiles/TxtCryptRC4.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target TxtCryptRC4"
@@ -151,8 +151,8 @@ CMakeFiles/TxtCryptRC4.dir/clean:
 # Target rules for target CMakeFiles/txt_crypt_cli.dir
 
 # All Build rule for target.
-CMakeFiles/txt_crypt_cli.dir/all: CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/all
 CMakeFiles/txt_crypt_cli.dir/all: CMakeFiles/txt_crypt_cli_autogen.dir/all
+CMakeFiles/txt_crypt_cli.dir/all: CMakeFiles/txt_crypt_cli_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli.dir/build.make CMakeFiles/txt_crypt_cli.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/txt_crypt_cli.dir/build.make CMakeFiles/txt_crypt_cli.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=10,11,12,13,14,15 "Built target txt_crypt_cli"
@@ -312,8 +312,8 @@ CMakeFiles/txt_crypt_cli_autogen.dir/clean:
 # Target rules for target tests/CMakeFiles/txt_crypt_rc4_tests.dir
 
 # All Build rule for target.
-tests/CMakeFiles/txt_crypt_rc4_tests.dir/all: tests/CMakeFiles/txt_crypt_rc4_tests_autogen_timestamp_deps.dir/all
 tests/CMakeFiles/txt_crypt_rc4_tests.dir/all: tests/CMakeFiles/txt_crypt_rc4_tests_autogen.dir/all
+tests/CMakeFiles/txt_crypt_rc4_tests.dir/all: tests/CMakeFiles/txt_crypt_rc4_tests_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/txt_crypt_rc4_tests.dir/build.make tests/CMakeFiles/txt_crypt_rc4_tests.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/txt_crypt_rc4_tests.dir/build.make tests/CMakeFiles/txt_crypt_rc4_tests.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=17,18,19,20,21 "Built target txt_crypt_rc4_tests"
@@ -345,8 +345,8 @@ tests/CMakeFiles/txt_crypt_rc4_tests.dir/clean:
 # Target rules for target tests/CMakeFiles/validator_tests.dir
 
 # All Build rule for target.
-tests/CMakeFiles/validator_tests.dir/all: tests/CMakeFiles/validator_tests_autogen_timestamp_deps.dir/all
 tests/CMakeFiles/validator_tests.dir/all: tests/CMakeFiles/validator_tests_autogen.dir/all
+tests/CMakeFiles/validator_tests.dir/all: tests/CMakeFiles/validator_tests_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/validator_tests.dir/build.make tests/CMakeFiles/validator_tests.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/validator_tests.dir/build.make tests/CMakeFiles/validator_tests.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/wenjian/work/txt_crypt_rc4/build/CMakeFiles --progress-num=23,24,25,26,27 "Built target validator_tests"

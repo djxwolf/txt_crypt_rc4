@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
     QCoreApplication::setApplicationName("txt_crypt_rc4");
-    QCoreApplication::setApplicationVersion("3.1");
+    QCoreApplication::setApplicationVersion("3.3");
 
     QCommandLineParser parser;
     parser.setApplicationDescription("RC4 Text File Encryption Tool - Command Line Interface");

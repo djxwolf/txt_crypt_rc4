@@ -73,7 +73,7 @@ Features:
 ### Command Line Interface
 
 ```bash
-# Basic usage
+# Basic usage with positional argument
 txt_crypt_cli encrypt <input-file> [output-file]
 txt_crypt_cli decrypt <input-file> [output-file]
 
@@ -85,11 +85,15 @@ txt_crypt_cli encrypt document.txt
 txt_crypt_cli decrypt document_encrypted.txt
 # Output: document_encrypted_decrypted.txt
 
+# Specify output file as positional argument
+txt_crypt_cli encrypt document.txt encrypted.txt
+txt_crypt_cli decrypt encrypted.txt restored.txt
+
 # In-place mode (overwrite original)
 txt_crypt_cli encrypt -i document.txt
 txt_crypt_cli decrypt -i encrypted.txt
 
-# Specify custom output file
+# Specify output file with -o option
 txt_crypt_cli encrypt -o output.txt input.txt
 txt_crypt_cli decrypt -o restored.txt encrypted.txt
 
@@ -185,6 +189,7 @@ ctest --output-on-failure
 
 ## Version History
 
+- **v3.3** - Added GitHub Actions daily build, CLI positional argument support
 - **v3.2** - Added command line interface tool
 - **v3.1** - Centered status bar messages, code cleanup
 - **v3.0** - Progress bar moved below buttons
