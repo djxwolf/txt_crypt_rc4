@@ -71,29 +71,29 @@ jobs:
           mingw-w64-x86_64-ninja
 
     - name: Clean and create build directory
+      shell: msys2 {0}
       run: |
-        Remove-Item -Recurse -Force build -ErrorAction SilentlyContinue
-        New-Item -ItemType Directory -Path build
-      shell: pwsh
+        rm -rf build
+        mkdir build
 
     - name: Configure CMake
+      shell: msys2 {0}
       run: |
-        cmake -B build -DCMAKE_BUILD_TYPE=Release -S $env:GITHUB_WORKSPACE -G Ninja -DCMAKE_PREFIX_PATH="C:\msys64\mingw64"
-      shell: pwsh
+        cmake -B build -DCMAKE_BUILD_TYPE=Release -S $GITHUB_WORKSPACE -G Ninja
 
     - name: Build CLI tool
+      shell: msys2 {0}
       run: |
         cmake --build build --target txt_crypt_cli
-      shell: pwsh
 
     - name: Test CLI tool
+      shell: msys2 {0}
       run: |
-        "Hello, World!" | Out-File -Encoding UTF8 test_input.txt
-        .\build\txt_crypt_cli.exe encrypt test_input.txt test_output.txt
-        .\build\txt_crypt_cli.exe decrypt test_output.txt test_decrypted.txt
-        Get-Content test_decrypted.txt
-        Remove-Item test_*.txt
-      shell: pwsh
+        echo "Hello, World!" > test_input.txt
+        ./build/txt_crypt_cli.exe encrypt test_input.txt test_output.txt
+        ./build/txt_crypt_cli.exe decrypt test_output.txt test_decrypted.txt
+        cat test_decrypted.txt
+        rm -f test_*.txt
 
     - name: Upload CLI Artifact
       uses: actions/upload-artifact@v4
