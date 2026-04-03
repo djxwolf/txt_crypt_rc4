@@ -12,23 +12,61 @@ A simple Qt/C++ based text file encryption and decryption tool using the RC4 alg
 - **Automatic file type detection** - detects encrypted files and enables appropriate action
 - **Progress tracking** - visual feedback during encryption/decryption
 - **Status messages** - clear feedback in status bar
+- **Cross-platform builds** - Automated CI/CD for Linux, macOS, and Windows
 
 ## Installation
 
-### Dependencies
+### Pre-built Binaries
+
+Download pre-built executables from the [Releases](https://github.com/djxwolf/txt_crypt_rc4/releases) page or [GitHub Actions Artifacts](https://github.com/djxwolf/txt_crypt_rc4/actions).
+
+| Platform | Artifact |
+|----------|----------|
+| Linux | `txt_crypt_cli-linux` |
+| macOS | `txt_crypt_cli-macos` |
+| Windows | `txt_crypt_cli-windows.exe` |
+
+### Build from Source
+
+#### Dependencies
 
 - Qt 6.x (or Qt 5.15+)
 - CMake 3.16+
 - C++17 compiler
 
-### Build from Source
+#### macOS
 
 ```bash
+brew install qt@6
+git clone https://github.com/djxwolf/txt_crypt_rc4.git
+cd txt_crypt_rc4
+mkdir build && cd build
+cmake .. -DCMAKE_PREFIX_PATH=$(brew --prefix qt@6)
+make -j4
+```
+
+#### Linux (Ubuntu/Debian)
+
+```bash
+sudo apt-get install qt6-base-dev cmake g++
 git clone https://github.com/djxwolf/txt_crypt_rc4.git
 cd txt_crypt_rc4
 mkdir build && cd build
 cmake ..
 make -j4
+```
+
+#### Windows (MSYS2)
+
+```bash
+# Install MSYS2 and required packages
+pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake mingw-w64-x86_64-qt6-base mingw-w64-x86_64-ninja
+
+git clone https://github.com/djxwolf/txt_crypt_rc4.git
+cd txt_crypt_rc4
+mkdir build && cd build
+cmake .. -G Ninja
+cmake --build . --target txt_crypt_cli
 ```
 
 Two executables will be built:
@@ -38,8 +76,9 @@ Two executables will be built:
 ### Install
 
 #### GUI Application
+
 ```bash
-# Copy to Applications folder (macOS)
+# macOS: Copy to Applications folder
 cp build/TxtCryptRC4 /Applications/TxtCryptRC4.app
 
 # Or run directly
@@ -47,6 +86,7 @@ cp build/TxtCryptRC4 /Applications/TxtCryptRC4.app
 ```
 
 #### Command Line Tool
+
 ```bash
 # Create symlink for system-wide access
 sudo ln -sf $(pwd)/build/txt_crypt_cli /usr/local/bin/txt_crypt_cli
@@ -114,14 +154,6 @@ txt_crypt_cli decrypt -t 300 encrypted.txt
 | `--help` | `-h` | Show help message |
 | `--version` | `-v` | Show version |
 
-### VS Code
-
-1. Open project in VS Code
-2. Install recommended extensions (CMake Tools, C/C++)
-3. Open project folder
-4. CMake Tools will automatically configure
-5. Click "Build" to compile
-
 ## Encryption Format
 
 The encrypted file content format is:
@@ -157,6 +189,17 @@ During decryption:
 - **Relative path**: Resolved relative to input file's directory
 - **Filename only**: Created in input file's directory
 
+## CI/CD
+
+This project uses GitHub Actions for automated builds:
+
+- **Daily builds** at 1 AM Beijing time (UTC 17:00)
+- **Multi-platform support**: Linux, macOS, Windows
+- **Automated testing** on each build
+- **Artifact uploads** for easy download
+
+View builds: https://github.com/djxwolf/txt_crypt_rc4/actions
+
 ## Development
 
 ### Code Style
@@ -170,13 +213,13 @@ txt_crypt_rc4/
 ├── src/              # Source files
 │   ├── MainWindow.h/cpp    # GUI main window
 │   ├── RC4Cipher.h/cpp     # RC4 encryption algorithm
-│   ├── Validator.h/cpp      # Timestamp and format validation
-│   ├── FileProcessor.h/cpp  # File processing coordination
-│   ├── cli.cpp              # Command line interface
-│   └── main.cpp             # GUI entry point
+│   ├── Validator.h/cpp     # Timestamp and format validation
+│   ├── FileProcessor.h/cpp # File processing coordination
+│   ├── cli.cpp             # Command line interface
+│   └── main.cpp            # GUI entry point
 ├── tests/            # Unit tests
 ├── docs/             # Documentation
-├── build/            # Build output
+├── .github/workflows/ # CI/CD workflows
 └── .vscode/          # VS Code configuration
 ```
 
@@ -189,7 +232,7 @@ ctest --output-on-failure
 
 ## Version History
 
-- **v3.3** - Added GitHub Actions daily build, CLI positional argument support
+- **v3.3** - GitHub Actions CI/CD for Linux/macOS/Windows, CLI positional argument support
 - **v3.2** - Added command line interface tool
 - **v3.1** - Centered status bar messages, code cleanup
 - **v3.0** - Progress bar moved below buttons
@@ -206,7 +249,6 @@ ctest --output-on-failure
 - **v1.9** - Progress bar in status bar
 - **v1.8** - Fixed status clearing when browsing
 - **v1.7** - Status bar added, removed popup messages
-- And more...
 
 ## License
 

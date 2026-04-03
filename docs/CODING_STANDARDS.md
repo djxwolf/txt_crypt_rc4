@@ -122,6 +122,43 @@ Two separate executables are built:
    - Links: Qt6::Core only
    - Headless operation
 
+## CI/CD
+
+### GitHub Actions Workflow
+
+The project uses GitHub Actions for automated builds:
+
+**Workflow:** `.github/workflows/daily-build.yml`
+
+**Schedule:** Daily at UTC 17:00 (Beijing 01:00)
+
+**Platforms:**
+- Linux (ubuntu-latest) - apt-get for Qt6
+- macOS (macos-latest) - Homebrew for Qt6
+- Windows (windows-latest) - MSYS2 for Qt6
+
+**Artifacts:**
+- `txt_crypt_cli-linux`
+- `txt_crypt_cli-macos`
+- `txt_crypt_cli-windows.exe`
+
+**Testing:**
+- Automated CLI tool test on each build
+- Encrypt/decrypt round-trip verification
+
+### Platform-Specific Notes
+
+**macOS:**
+- Requires SDKROOT for AppleClang compatibility
+- CMake flags: `-DCMAKE_CXX_FLAGS="-isysroot $SDKROOT"`
+
+**Windows:**
+- Uses MSYS2 shell for all build commands
+- Ninja generator for faster builds
+
+**Linux:**
+- Standard Qt6 packages via apt
+
 ## Commit Messages
 
 Use conventional commit format:
@@ -183,11 +220,12 @@ ctest --output-on-failure
 - Native look with Fusion style
 
 ### Linux
-- Should work with Qt6 packages
-- May require package manager dependencies
+- Works with Qt6 packages
+- Package manager dependencies (apt, yum, etc.)
 
 ### Windows
-- Not tested but should work with MinGW/MSVC Qt6
+- Tested with MSYS2/MinGW64
+- Requires Qt6 via MSYS2
 
 ## Security Considerations
 

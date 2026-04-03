@@ -2,7 +2,6 @@
 #include <QFile>
 #include <QTextStream>
 #include <QByteArray>
-#include <QCryptographicHash>
 
 FileProcessor::FileProcessor(QObject *parent)
     : QObject(parent)
