@@ -49,6 +49,47 @@ jobs:
         name: txt_crypt_cli-linux
         path: build/txt_crypt_cli
 
+  build-macos:
+    name: Build CLI Tool (macOS)
+    runs-on: macos-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install Qt6
+      run: |
+        brew install qt@6
+
+    - name: Clean and create build directory
+      run: |
+        rm -rf build
+        mkdir build
+
+    - name: Configure CMake (CLI only)
+      run: |
+        cmake -B build -DCMAKE_BUILD_TYPE=Release -S $GITHUB_WORKSPACE -DCMAKE_PREFIX_PATH="$(brew --prefix qt@6)"
+
+    - name: Build CLI tool
+      run: |
+        make -C build txt_crypt_cli -j$(sysctl -n hw.ncpu)
+
+    - name: Test CLI tool
+      run: |
+        echo "Hello, World!" > /tmp/test_input.txt
+        build/txt_crypt_cli encrypt /tmp/test_input.txt /tmp/test_output.txt
+        build/txt_crypt_cli decrypt /tmp/test_output.txt /tmp/test_decrypted.txt
+        cat /tmp/test_decrypted.txt
+        rm -f /tmp/test_*.txt
+
+    - name: Upload CLI Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: txt_crypt_cli-macos
+        path: build/txt_crypt_cli
+
   build-windows:
     name: Build CLI Tool (Windows)
     runs-on: windows-latest
