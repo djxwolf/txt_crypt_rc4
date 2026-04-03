@@ -8,10 +8,10 @@
 
 void printUsage(const QString &appName)
 {
-    QTextStream(stderr) << "Usage: " << appName << " <command> <options>\n\n"
+    QTextStream(stderr) << "Usage: " << appName << " <command> <input-file> [output-file] <options>\n\n"
                        << "Commands:\n"
-                       << "  encrypt <input-file> [output-file]  Encrypt a file\n"
-                       << "  decrypt <input-file> [output-file]  Decrypt a file\n\n"
+                       << "  encrypt  Encrypt a file\n"
+                       << "  decrypt  Decrypt a file\n\n"
                        << "Options:\n"
                        << "  -t, --timeout <seconds>               Timeout in seconds (default: 600)\n"
                        << "                                       Use 0 or negative to disable timeout\n"
@@ -38,6 +38,7 @@ int main(int argc, char *argv[])
 
     parser.addPositionalArgument("command", "Command to execute (encrypt/decrypt)");
     parser.addPositionalArgument("input-file", "Input file path");
+    parser.addPositionalArgument("output-file", "Output file path (optional, default: auto-generated)", "[output-file]");
 
     QCommandLineOption timeoutOption(QStringList() << "t" << "timeout",
         "Timeout in seconds (default: 600, use 0 or negative to disable)", "seconds", "600");
@@ -78,6 +79,9 @@ int main(int argc, char *argv[])
     // Determine output path
     if (parser.isSet(inPlaceOption)) {
         outputPath = inputPath;
+    } else if (args.size() >= 3) {
+        // Use positional argument for output file
+        outputPath = args[2];
     } else if (parser.isSet(outputOption)) {
         outputPath = parser.value(outputOption);
     } else {
