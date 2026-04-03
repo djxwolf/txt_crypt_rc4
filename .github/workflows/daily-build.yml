@@ -7,8 +7,8 @@ on:
   workflow_dispatch:  # Allow manual trigger
 
 jobs:
-  build:
-    name: Build CLI Tool
+  build-linux:
+    name: Build CLI Tool (Linux)
     runs-on: ubuntu-latest
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -49,12 +49,58 @@ jobs:
         name: txt_crypt_cli-linux
         path: build/txt_crypt_cli
 
-    - name: Build Summary
+  build-windows:
+    name: Build CLI Tool (Windows)
+    runs-on: windows-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install Qt6
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: '6.8.1'
+        host: 'windows'
+        target: 'desktop'
+        arch: 'mingw64'
+        modules: 'qtbase'
+
+    - name: Setup MinGW
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: MINGW64
+        update: true
+        install: mingw-w64-x86_64-cmake mingw-w64-x86_64-gcc
+
+    - name: Clean and create build directory
       run: |
-        echo "## Build Summary" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "- ✅ CLI tool built successfully" >> $GITHUB_STEP_SUMMARY
-        echo "- ✅ Tests passed" >> $GITHUB_STEP_SUMMARY
-        echo "- 📦 CLI artifact uploaded" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "Note: GUI app skipped (requires X11, not suitable for CI)" >> $GITHUB_STEP_SUMMARY
+        Remove-Item -Recurse -Force build -ErrorAction SilentlyContinue
+        New-Item -ItemType Directory -Path build
+
+    - name: Configure CMake (CLI only)
+      run: |
+        cmake -B build -DCMAKE_BUILD_TYPE=Release -S $env:GITHUB_WORKSPACE -G "MinGW Makefiles"
+      shell: pwsh
+
+    - name: Build CLI tool
+      run: |
+        cmake --build build --target txt_crypt_cli --parallel
+      shell: pwsh
+
+    - name: Test CLI tool
+      run: |
+        "Hello, World!" | Out-File -Encoding UTF8 test_input.txt
+        .\build\txt_crypt_cli.exe encrypt test_input.txt test_output.txt
+        .\build\txt_crypt_cli.exe decrypt test_output.txt test_decrypted.txt
+        Get-Content test_decrypted.txt
+        Remove-Item test_*.txt
+      shell: pwsh
+
+    - name: Upload CLI Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: txt_crypt_cli-windows
+        path: build/txt_crypt_cli.exe
